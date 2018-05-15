@@ -76,6 +76,7 @@ class PokemonDetail extends Component {
          <ul className="pokemon-detail--strong">{type.damage_relations.double_damage_to.map((strength, i) => <li key={strength.name} className={`pill-${strength.name}`}>{strength.name}</li>)}</ul>
           <h3>Special Abilities:</h3>
          <ul className="pokemon-detail--abilities">{poke.abilities.map((a, i) => <li key={a.ability.name}>{a.ability.name}</li>)}</ul>
+         <Link to={`/pokemon/${poke.id - 1}`}>&laquo; Previous Pokemon</Link>
          <Link to={`/pokemon/${poke.id + 1}`}>Next Pokemon &raquo;</Link>
        </div>
     } else if (loading && !fetched) {

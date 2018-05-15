@@ -11,6 +11,7 @@ React app that uses the [Pokéapi](https://pokeapi.co/) and React to create an i
 - Catch em all!
 
 ### Todo
+Add Search
 Add structural styling to detail page
 Add icons for quick reference of strengths/weaknesses
 

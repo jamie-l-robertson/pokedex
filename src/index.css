@@ -128,7 +128,7 @@ ul:not(.pokemon-detail--abilities):not(.pokemon-detail--stats) {
   background-color: gainsboro;
 }
 
-.pill-poison {
+.pill-bug {
   color: #0C0C0C;
   background-color: greenyellow;
 }
@@ -141,4 +141,14 @@ ul:not(.pokemon-detail--abilities):not(.pokemon-detail--stats) {
 .pill-dragon {
   color: #FFFFFF;
   background-color: navy;
+}
+
+.pill-poison {
+  color: #FFFFFF;
+  background-color: rgb(92, 0, 128);
+}
+
+.pill-ice {
+  color: #0C0C0C;
+  background-color: rgb(137, 236, 253);
 }
