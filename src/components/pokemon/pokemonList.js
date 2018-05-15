@@ -37,7 +37,7 @@ class PokemonList extends Component {
 
   render() {
     const { fetched, loading, species, filter } = this.state;
-    const filtered = species.filter(e => e.name.includes(filter)).map(((p, index) => <Pokemon key={p.name} pokemon={p} />));
+    const filtered = species.filter(e => e.name.includes(filter.toLowerCase())).map(((p, index) => <Pokemon key={p.name} pokemon={p} />));
     let content;
     
     if (fetched) {

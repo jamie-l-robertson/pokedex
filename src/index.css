@@ -55,6 +55,11 @@ body {
   font-size: 16px;
   margin: 0 0 10px;
   text-transform: capitalize;
+  color: #0C0C0C;
+}
+
+.pokemon-species-link {
+  text-decoration: none;
 }
 
 .loading {
@@ -193,19 +198,22 @@ ul:not(.pokemon-detail--abilities):not(.pokemon-detail--stats) {
   display: block;
   max-width: 600px;
   margin: 20px auto;
+  padding: 20px;
 }
 
 .pokemon-detail-heading {
   text-transform: capitalize
 }
 
-.pokemon-stats-wrapper,
-.pokemon-types-wrapper,
-.pokemon-detail-weak-wrapper,
-.pokemon-detail-strength-wrapper {
-  display: inline-block;
-  width: 50%;
-  vertical-align: top;
+@media (min-width: 640px) {
+  .pokemon-stats-wrapper,
+  .pokemon-types-wrapper,
+  .pokemon-detail-weak-wrapper,
+  .pokemon-detail-strength-wrapper {
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+  }
 }
 
 .pokemon-detail-info-wrapper,

@@ -60,7 +60,7 @@ class PokemonDetail extends Component {
 
     if (fetched) {
        content = <div className="pokemon-detail">
-         <Link to='/' className="btn">&laquo; Back to List</Link>
+         <Link to='/pokedex' className="btn">&laquo; Back to List</Link>
           <header className="pokemon-header">
             <h2 className="pokemon-detail-heading">{poke.name} - #{poke.id}</h2>
             <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${poke.id}.png`} alt="{poke.name}"/>
@@ -91,8 +91,8 @@ class PokemonDetail extends Component {
             <ul className="pokemon-detail--abilities">{poke.abilities.map((a, i) => <li key={a.ability.name}>{a.ability.name}</li>)}</ul>
           </div>
         </div>
-         <Link to={`/pokemon/${poke.id - 1}`} className="btn">&laquo; Previous Pokemon</Link>
-         <Link to={`/pokemon/${poke.id + 1}`} className="btn btn-right">Next Pokemon &raquo;</Link>
+         <Link to={`/pokedex/pokemon/${poke.id - 1}`} className="btn">&laquo; Previous Pokemon</Link>
+         <Link to={`/pokedex/pokemon/${poke.id + 1}`} className="btn btn-right">Next Pokemon &raquo;</Link>
        </div>
     } else if (loading && !fetched) {
       content = <p className="loading">

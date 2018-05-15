@@ -8,7 +8,7 @@ class Pokemon extends Component {
     
     return (
       <div className="pokemon-species">
-        <Link to={`/pokemon/${id}`} id={id}>
+        <Link to={`/pokedex/pokemon/${id}`} id={id} className="pokemon-species-link">
           <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`} alt="{pokemon.name}" className="pokemon-species-img" />
           <h2 className="pokemon-species-title">{pokemon.name} <span className="pokemon-species-number">#{id}</span></h2>
         </Link>
