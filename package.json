@@ -2,7 +2,7 @@
   "name": "pokemon-go-dex",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ru7hl355.github.io/pokedex",
+  "homepage": "./",
   "dependencies": {
     "gh-pages": "^1.1.0",
     "react": "^16.3.2",
