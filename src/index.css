@@ -49,3 +49,96 @@ body {
   transform: translate(-50%, -50%);
   text-align: center;
 }
+
+/* types */
+ul:not(.pokemon-detail--abilities):not(.pokemon-detail--stats) {
+  padding: 0;
+}
+
+[class*="pill-"] {
+  display: inline-block;
+  padding: 3px 5px;
+  border-radius: 3px;
+  list-style: none;
+  margin-right: 5px;
+}
+
+.pill-normal {
+  color: #0C0C0C;
+  background-color: #EEEEEE;
+}
+
+.pill-electric {
+  color: #0C0C0C;
+  background-color: yellow;
+}
+
+.pill-fighting {
+  color: #FFFFFF;
+  background-color: brown;
+}
+
+.pill-psychic {
+  color: #FFFFFF;
+  background-color: purple;
+}
+
+.pill-dark {
+  color: #FFFFFF;
+  background-color: grey;
+}
+
+.pill-ghost {
+  color: #FFFFFF;
+  background-color: blueviolet;
+}
+
+.pill-grass {
+  color: #FFFFFF;
+  background-color: green;
+}
+
+.pill-fire {
+  color: #FFFFFF;
+  background-color: red;
+}
+
+.pill-water {
+  color: #0C0C0C;
+  background-color: aqua;
+}
+
+.pill-steel {
+  color: #0C0C0C;
+  background-color: silver;
+}
+
+.pill-fairy {
+  color: #FFFFFF;
+  background-color: salmon;
+}
+
+.pill-flying {
+  color: #0C0C0C;
+  background-color: skyblue;
+}
+
+.pill-rock {
+  color: #0C0C0C;
+  background-color: gainsboro;
+}
+
+.pill-poison {
+  color: #0C0C0C;
+  background-color: greenyellow;
+}
+
+.pill-ground {
+  color: #0C0C0C;
+  background-color: burlywood;
+}
+
+.pill-dragon {
+  color: #FFFFFF;
+  background-color: navy;
+}
