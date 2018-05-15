@@ -59,7 +59,7 @@ class PokemonDetail extends Component {
 
     if (fetched) {
        content = <div className="pokemon-detail">
-         <Link to='/'>&laquo; Back</Link>
+         <Link to='/'>&laquo; Back to List</Link>
          <h2>{poke.name} - #{poke.id}</h2>
          <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${poke.id}.png`} alt="{poke.name}"/>
          <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${poke.id}.png`} alt="{poke.name} Shiny variant"/>
