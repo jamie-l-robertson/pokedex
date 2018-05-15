@@ -11,8 +11,8 @@ class App extends Component {
         <Router>
           <div>
             <Switch>
-            <Route exact path={`${process.env.PUBLIC_URL}/`} component={PokemonList} />
-            <Route exact path={`${process.env.PUBLIC_URL}/pokemon/:id`} component={PokemonDetail} />
+            <Route exact path={process.env.PUBLIC_URL + '/'} component={PokemonList} />
+            <Route exact path={process.env.PUBLIC_URL + '/pokemon/:id'} component={PokemonDetail} />
             </Switch>
           </div>
         </Router>

@@ -17,7 +17,7 @@ class PokemonList extends Component {
       loading: true
     }); 
 
-    fetch('http://pokeapi.co/api/v2/pokemon?limit=385')
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=385')
     .then(response => response.json())
     .then(json => {
       this.setState({

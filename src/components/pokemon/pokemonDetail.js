@@ -25,7 +25,7 @@ class PokemonDetail extends Component {
       loading: true
     });
 
-    fetch('http://pokeapi.co/api/v2/pokemon/' + id)
+    fetch('https://pokeapi.co/api/v2/pokemon/' + id)
     .then(response => response.json())
     .then(json => {
       this.setState({
