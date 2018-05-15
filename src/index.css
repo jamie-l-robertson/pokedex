@@ -12,7 +12,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Signika', sans-serif;
 }
 
 html,
@@ -28,16 +28,33 @@ body {
 
 .pokemon-species {
   display: inline-block;
+  position: relative;
   margin: 10px;
   padding: 10px;
   min-width: 150px;
   background-color: #EEEEEE;
   text-align: center;
+  border-radius: 3px;
+}
+
+.pokemon-species-number {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+  color: #CCCCCC;
+  font-size: 20px;
+}
+
+.pokemon-species-img {
+  position: relative;
+  z-index: 2;
 }
 
 .pokemon-species-title {
   font-size: 16px;
   margin: 0 0 10px;
+  text-transform: capitalize;
 }
 
 .loading {
@@ -50,6 +67,10 @@ body {
   text-align: center;
 }
 
+.loading svg {
+  animation: pokeball-spin 0.8s infinite;
+}
+
 /* types */
 ul:not(.pokemon-detail--abilities):not(.pokemon-detail--stats) {
   padding: 0;
@@ -60,7 +81,8 @@ ul:not(.pokemon-detail--abilities):not(.pokemon-detail--stats) {
   padding: 3px 5px;
   border-radius: 3px;
   list-style: none;
-  margin-right: 5px;
+  margin-right: 8px;
+  text-transform: capitalize;
 }
 
 .pill-normal {
@@ -151,4 +173,65 @@ ul:not(.pokemon-detail--abilities):not(.pokemon-detail--stats) {
 .pill-ice {
   color: #0C0C0C;
   background-color: rgb(137, 236, 253);
+}
+
+.btn {
+  display: inline-block;
+  color: #0C0C0C;
+  background-color: #BBBBBB;
+  border-radius: 3px;
+  margin-right: 10px;
+  padding: 5px 8px;
+  text-decoration: none;
+}
+
+.btn-right {
+  float: right;
+}
+
+.pokemon-detail {
+  display: block;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.pokemon-detail-heading {
+  text-transform: capitalize
+}
+
+.pokemon-stats-wrapper,
+.pokemon-types-wrapper,
+.pokemon-detail-weak-wrapper,
+.pokemon-detail-strength-wrapper {
+  display: inline-block;
+  width: 50%;
+  vertical-align: top;
+}
+
+.pokemon-detail-info-wrapper,
+.pokemon-detail-special-wrapper {
+  display: block;
+  width: 100%;
+  border: 2px solid #EEEEEE;
+  border-width: 2px 0;
+  padding: 20px 0;
+  margin: 20px 0 30px;
+  clear: both;
+}
+
+.pokemon-detail-special-wrapper {
+  border-bottom: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+
+
+@keyframes pokeball-spin {
+  from {
+      transform:rotate(0deg);
+  }
+  to {
+      transform:rotate(360deg);
+  }
 }

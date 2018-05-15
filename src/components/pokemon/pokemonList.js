@@ -2,21 +2,20 @@ import React, { Component } from 'react';
 import Pokemon from './pokemon';
 import Loader from '../loader';
 
-class PokemonList extends Component {
-  constructor(props) {
-    super(props);
+const InitialState = {
+  species: [],
+  fetched: false,
+  loading: false,
+  filter: ''
+};
 
-    this.state = {
-      species: [],
-      fetched: false,
-      loading: false
-    }
-  }
+class PokemonList extends Component {
+  state = localStorage.getItem("appState") ? JSON.parse(localStorage.getItem("appState")) : InitialState;
 
   componentWillMount() {
     this.setState({
       loading: true
-    });
+    }); 
 
     fetch('http://pokeapi.co/api/v2/pokemon?limit=385')
     .then(response => response.json())
@@ -32,25 +31,33 @@ class PokemonList extends Component {
     });  
   }
 
+  componentWillUnmount() {
+    localStorage.setItem('appState', JSON.stringify(this.state));
+  }
+
   render() {
-    const { fetched, loading, species } = this.state;
+    const { fetched, loading, species, filter } = this.state;
+    const filtered = species.filter(e => e.name.includes(filter)).map(((p, index) => <Pokemon key={p.name} pokemon={p} />));
     let content;
     
     if (fetched) {
-        content = <div className="pokemon-list">{species.map((pokemon, index) => <Pokemon key={pokemon.name} id={index+1} pokemon={pokemon} />)}</div>
+        content = 
+          <div>
+          <div className="pokedex-search">
+            <label htmlFor="search-input">Search Pokedex:</label>
+            <input type="text" value={filter} onChange={e => this.setState({ filter: e.target.value })} id="search-input" />
+            <button onClick={() => this.setState({ filter: '' })}>X</button>
+          </div>
+            <div className="pokemon-list">{filtered}</div>
+          </div>
+
     } else if (loading && !fetched) {
-        content = <p className="loading">
-          <Loader />
-          Loading...
-          </p>
+        content = <p className="loading"><Loader />Loading...</p>
     } else {
         content = <div/>
     }
-    return (
-        <div>
-            {content}
-        </div>
-    )
+
+    return (<div>{content}</div>);
   }
  }
 

@@ -3,13 +3,15 @@ import { Link } from 'react-router-dom';
 
 class Pokemon extends Component {
   render() {
-    const { pokemon, id } = this.props;
+    const { pokemon } = this.props;
+    const id = pokemon.url.match(/([^/]*)\/*$/)[1];
     
     return (
       <div className="pokemon-species">
-        <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`} alt="{pokemon.name}"/>
-        <h2 className="pokemon-species-title">{pokemon.name} - #{id}</h2>
-        <Link to={`/pokemon/${id}`} id={id}>Details</Link>
+        <Link to={`/pokemon/${id}`} id={id}>
+          <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`} alt="{pokemon.name}" className="pokemon-species-img" />
+          <h2 className="pokemon-species-title">{pokemon.name} <span className="pokemon-species-number">#{id}</span></h2>
+        </Link>
       </div>
     )
   }
