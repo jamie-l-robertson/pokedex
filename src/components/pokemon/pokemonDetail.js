@@ -36,13 +36,25 @@ class PokemonDetail extends Component {
       .then(response => response.json())
       .then(json => {
         this.setState({
-          type: json,
-          loading: true,
-          fetched: true
+          type: json
         });
 
-        // @TODO - Get description from http://pokeapi.co/api/v1/description/:id
-        // url comes from poke object.
+        fetch('https://pokeapi.co/api/v2/pokemon-species/' + id)
+        .then(response => response.json())
+        .then(json => {
+          const description = json.flavor_text_entries.find(x => x.language.name === 'en');
+
+          this.setState({
+            species: json,
+            description: description.flavor_text,
+            loading: true,
+            fetched: true
+          });
+        })
+        .catch(error => {
+          console.log(error);
+        });
+
       })
       .catch(error => {
         console.log(error);
@@ -55,7 +67,7 @@ class PokemonDetail extends Component {
   }
 
   render() {
-    const { fetched, loading, poke, type } = this.state;
+    const { fetched, loading, poke, type, species, description } = this.state;
     let content;
 
     if (fetched) {
@@ -66,6 +78,8 @@ class PokemonDetail extends Component {
             <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${poke.id}.png`} alt="{poke.name}"/>
             <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${poke.id}.png`} alt="{poke.name} Shiny variant"/>
           </header>
+          <div className="pokemon-description"><p>{description}</p></div>
+          <div className="pokemon-trivia"><p>Generation: {species.generation.name}</p><p>Habitat: {species.habitat.name}</p></div>
           <div className="pokemon-stats-wrapper">
             <h3>Stats:</h3>
             <ul className="pokemon-detail--stats">

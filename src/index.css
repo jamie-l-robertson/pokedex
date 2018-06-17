@@ -1,7 +1,7 @@
 *,
 *::after,
 *::before {
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
 html {
@@ -20,6 +20,40 @@ body {
   width: 100%;
 }
 
+.pokedex-search {
+  padding: 10px;
+  color: #FFFFFF;
+  background-color: #E1371F;
+  text-align: center;
+  white-space: no-wrap;
+}
+
+.pokedex-search label {
+  color: #FFFFFF;
+  margin-right: 5px;
+}
+
+.pokedex-search input[type="text"] {
+  border: 0;
+  border-radius: 5px 0 0 5px;
+  padding: 5px;
+  font-size: 16px;
+  height: 28px;
+  width: 120px;
+}
+
+.pokedex-search button {
+  display: inline-block;
+  border: 0;
+  padding: 5px 10px;
+  border-radius: 0 5px 5px 0;
+  height: 28px;
+  vertical-align: bottom;
+  color: #FFFFFF;
+  background-color: black;
+  cursor: pointer;
+}
+
 .pokemon-list {
   display: block;
   overflow: hidden;
@@ -31,10 +65,16 @@ body {
   position: relative;
   margin: 10px;
   padding: 10px;
-  min-width: 150px;
+  min-width: 120px;
   background-color: #EEEEEE;
   text-align: center;
   border-radius: 3px;
+}
+
+@media(min-width:768px) {
+  .pokemon-species {
+    min-width: 150px;
+  }
 }
 
 .pokemon-species-number {
@@ -86,7 +126,7 @@ ul:not(.pokemon-detail--abilities):not(.pokemon-detail--stats) {
   padding: 3px 5px;
   border-radius: 3px;
   list-style: none;
-  margin-right: 8px;
+  margin: 0 8px 8px 0;
   text-transform: capitalize;
 }
 
