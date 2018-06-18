@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import Loader from '../loader';
 import { Link } from 'react-router-dom';
 
-const intialState = {
+const InitialState = {
   fetched: false,
   loading: false
 };
 
 class PokemonDetail extends Component {
-  state = intialState;
+  state = InitialState;
 
   componentDidMount() {
     this.setState({ fetched: false });
@@ -16,14 +16,24 @@ class PokemonDetail extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    localStorage.setItem(`poke-${this.props.match.params.id}`, JSON.stringify(this.state));
     this.setState({ fetched: false });
     this.getData(nextProps.match.params.id);
+  }
+
+  componentWillUnmount() {
+    localStorage.setItem(`poke-${this.props.match.params.id}`, JSON.stringify(this.state));
   }
 
   getData(id) {
     this.setState({
       loading: true
     });
+
+    if (localStorage.getItem(`poke-${id}`)) {
+      this.setState(JSON.parse(localStorage.getItem(`poke-${id}`)));
+      return;
+    }
 
     fetch('https://pokeapi.co/api/v2/pokemon/' + id)
     .then(response => response.json())
@@ -43,10 +53,19 @@ class PokemonDetail extends Component {
         .then(response => response.json())
         .then(json => {
           const description = json.flavor_text_entries.find(x => x.language.name === 'en');
+          const alolan = json.varieties.find(p => p.pokemon.name.includes('alola'));
+          let alolanSprite;
+
+          if (alolan) {
+            id === '25' ? alolanSprite = '25-alola-cap' : alolanSprite = id + '-alola';
+          }
+
+          console.log(alolanSprite);
 
           this.setState({
             species: json,
             description: description.flavor_text,
+            alolanForm: alolanSprite,
             loading: true,
             fetched: true
           });
@@ -67,7 +86,7 @@ class PokemonDetail extends Component {
   }
 
   render() {
-    const { fetched, loading, poke, type, species, description } = this.state;
+    const { fetched, loading, poke, type, species, description, alolanForm } = this.state;
     let content;
 
     if (fetched) {
@@ -75,8 +94,9 @@ class PokemonDetail extends Component {
          <Link to='/pokedex' className="btn">&laquo; Back to List</Link>
           <header className="pokemon-header">
             <h2 className="pokemon-detail-heading">{poke.name} - #{poke.id}</h2>
-            <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${poke.id}.png`} alt="{poke.name}"/>
-            <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${poke.id}.png`} alt="{poke.name} Shiny variant"/>
+            <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${poke.id}.png`} alt="Normal variant"/>
+            <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${poke.id}.png`} alt="Shiny variant"/>
+            {alolanForm ? <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${alolanForm}.png`} alt="Alolan variant"/> : null }
           </header>
           <div className="pokemon-description"><p>{description}</p></div>
           <div className="pokemon-trivia"><p>Generation: {species.generation.name}</p><p>Habitat: {species.habitat.name}</p></div>

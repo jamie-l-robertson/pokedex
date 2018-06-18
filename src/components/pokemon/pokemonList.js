@@ -10,7 +10,7 @@ const InitialState = {
 };
 
 class PokemonList extends Component {
-  state = localStorage.getItem("appState") ? JSON.parse(localStorage.getItem("appState")) : InitialState;
+  state = localStorage.getItem('appState') ? JSON.parse(localStorage.getItem('appState')) : InitialState;
 
   componentWillMount() {
     this.setState({

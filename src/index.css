@@ -21,6 +21,9 @@ body {
 }
 
 .pokedex-search {
+  position: fixed;
+  z-index: 10;
+  width: 100%;
   padding: 10px;
   color: #FFFFFF;
   background-color: #E1371F;
@@ -55,6 +58,7 @@ body {
 }
 
 .pokemon-list {
+  padding-top: 50px;
   display: block;
   overflow: hidden;
   text-align: center;
