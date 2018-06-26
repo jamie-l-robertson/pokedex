@@ -73,7 +73,7 @@ class PokemonList extends Component {
             handleInputChange={this.handleInputChange}
             handleInputClear={this.handleInputClear}
           />
-          <List>{filtered}</List>
+          <List>{filtered.length ? filtered : 'No Pokemon by that name'}</List>
         </React.Fragment>
       );
     } else if (loading && !fetched) {
