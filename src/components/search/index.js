@@ -1,19 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Searchbox } from './styles';
 
-class Search extends Component {
-  state = {
-    filter: '',
-    species: []
-  };
-
-  render() {
-    return (
-      <div className="pokedex-search">
+export const Search = props => {
+  return (
+    <Searchbox>
+      <form onSubmit={props.handleSubmit}>
         <label htmlFor="search-input">Search Pokedex:</label>
-        <input type="text" onChange={e => this.setState({ filter: e.target.value })} id="search-input" />
-      </div>
-    )
-  }
-}
-
-export default Search;
+        <input type="text" value={props.filter} onChange={props.handleInputChange} />
+        <button onClick={props.handleInputClear}>X</button>
+      </form>
+    </Searchbox>
+  );
+};
