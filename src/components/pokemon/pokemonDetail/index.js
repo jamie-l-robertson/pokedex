@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Loader from '../../loader';
 import { Link } from 'react-router-dom';
+import { Sprite } from '../sprite';
 import { Wrapper } from './styles';
 
 const InitialState = {
@@ -97,20 +98,7 @@ class PokemonDetail extends Component {
             <h2 className="heading">
               {poke.name} - #{poke.id}
             </h2>
-            <img
-              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${poke.id}.png`}
-              alt="Normal variant"
-            />
-            <img
-              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${poke.id}.png`}
-              alt="Shiny variant"
-            />
-            {alolanForm ? (
-              <img
-                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${alolanForm}.png`}
-                alt="Alolan variant"
-              />
-            ) : null}
+            <Sprite id={poke.id} alt="Normal variant" showShiny alolan={alolanForm ? alolanForm : null} />
           </header>
           <div className="description">
             <p>{description}</p>
@@ -147,16 +135,18 @@ class PokemonDetail extends Component {
                 ))}
               </ul>
             </div>
-            <div className="strength-wrapper">
-              <h3>Strong against:</h3>
-              <ul className=".strong">
-                {type.damage_relations.double_damage_to.map((strength, i) => (
-                  <li key={strength.name} className={`pill-${strength.name}`}>
-                    {strength.name}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {type.damage_relations.double_damage_to.length > 0 ? (
+              <div className="strength-wrapper">
+                <h3>Strong against:</h3>
+                <ul className="strong">
+                  {type.damage_relations.double_damage_to.map((strength, i) => (
+                    <li key={strength.name} className={`pill-${strength.name}`}>
+                      {strength.name}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
             <div className="special-wrapper">
               <h3>Special Abilities:</h3>
               <ul className="abilities">

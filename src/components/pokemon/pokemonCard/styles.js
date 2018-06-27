@@ -18,28 +18,28 @@ export const Card = Styled.article`
     outline: 3px solid #E1371F;
   }
 
-  .pokemon-number {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 1;
-    color: #CCCCCC;
-    font-size: 20px;
-  }
-
-  .pokemon-img {
+  img {
     position: relative;
     z-index: 2;
   }
 
-  .pokemon-title {
+  h2 {
     font-size: 16px;
     margin: 0 0 10px;
     text-transform: capitalize;
     color: #0C0C0C;
+
+    span {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 1;
+      color: #CCCCCC;
+      font-size: 20px;
+    }
   }
 
-  .pokemon-link {
+  a {
     text-decoration: none;
   }
 `;

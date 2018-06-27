@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { Sprite } from '../sprite';
 import { Card } from './styles';
 
 class Pokemon extends Component {
@@ -10,14 +11,10 @@ class Pokemon extends Component {
 
     return (
       <Card>
-        <Link to={`/pokedex/pokemon/${id}`} id={id} className="pokemon-link">
-          <img
-            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
-            alt="{pokemon.name}"
-            className="pokemon-img"
-          />
-          <h2 className="pokemon-title">
-            {pokemon.name} <span className="pokemon-number">#{id}</span>
+        <Link to={`/pokedex/pokemon/${id}`} id={id}>
+          <Sprite id={id} alt={pokemon.name} />
+          <h2>
+            {pokemon.name} <span>#{id}</span>
           </h2>
         </Link>
       </Card>
