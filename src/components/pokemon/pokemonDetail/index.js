@@ -93,8 +93,8 @@ class PokemonDetail extends Component {
           <Link to="/pokedex" className="btn">
             &laquo; Back to List
           </Link>
-          <header className="pokemon-header">
-            <h2 className="pokemon-detail-heading">
+          <header>
+            <h2 className="heading">
               {poke.name} - #{poke.id}
             </h2>
             <img
@@ -112,23 +112,23 @@ class PokemonDetail extends Component {
               />
             ) : null}
           </header>
-          <div className="pokemon-description">
+          <div className="description">
             <p>{description}</p>
           </div>
-          <div className="pokemon-trivia">
+          <div className="trivia">
             <p>Generation: {species.generation.name}</p>
             <p>Habitat: {species.habitat.name}</p>
           </div>
-          <div className="pokemon-stats-wrapper">
+          <div className="stats-wrapper">
             <h3>Stats:</h3>
-            <ul className="pokemon-detail--stats">
+            <ul className="stats">
               <li>height: {poke.height}(WTF?)</li>
               <li>weight: {poke.weight}lb</li>
             </ul>
           </div>
-          <div className="pokemon-types-wrapper">
+          <div className="types-wrapper">
             <h3>Type:</h3>
-            <ul className="pokemon-detail--type">
+            <ul className="type">
               {poke.types.map((t, index) => (
                 <li key={t.type.name} className={`pill-${t.type.name}`}>
                   {t.type.name}
@@ -136,10 +136,10 @@ class PokemonDetail extends Component {
               ))}
             </ul>
           </div>
-          <div className="pokemon-detail-info-wrapper">
-            <div className="pokemon-detail-weak-wrapper">
+          <div className="info-wrapper">
+            <div className="weak-wrapper">
               <h3>Weak against:</h3>
-              <ul className="pokemon-detail--weak">
+              <ul className="weak">
                 {type.damage_relations.double_damage_from.map((weakness, i) => (
                   <li key={weakness.name} className={`pill-${weakness.name}`}>
                     {weakness.name}
@@ -147,9 +147,9 @@ class PokemonDetail extends Component {
                 ))}
               </ul>
             </div>
-            <div className="pokemon-detail-strength-wrapper">
+            <div className="strength-wrapper">
               <h3>Strong against:</h3>
-              <ul className="pokemon-detail--strong">
+              <ul className=".strong">
                 {type.damage_relations.double_damage_to.map((strength, i) => (
                   <li key={strength.name} className={`pill-${strength.name}`}>
                     {strength.name}
@@ -157,9 +157,9 @@ class PokemonDetail extends Component {
                 ))}
               </ul>
             </div>
-            <div className="pokemon-detail-special-wrapper">
+            <div className="special-wrapper">
               <h3>Special Abilities:</h3>
-              <ul className="pokemon-detail--abilities">
+              <ul className="abilities">
                 {poke.abilities.map((a, i) => <li key={a.ability.name}>{a.ability.name}</li>)}
               </ul>
             </div>

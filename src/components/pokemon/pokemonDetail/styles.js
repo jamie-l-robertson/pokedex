@@ -6,14 +6,14 @@ export const Wrapper = Styled.article`
   margin: 20px auto;
   padding: 20px;
 
-  .pokemon-detail-heading {
+  .heading {
     text-transform: capitalize;
   }
 
-  .pokemon-stats-wrapper,
-  .pokemon-types-wrapper,
-  .pokemon-detail-weak-wrapper,
-  .pokemon-detail-strength-wrapper {
+  .stats-wrapper,
+  .types-wrapper,
+  .weak-wrapper,
+  .strength-wrapper {
     @media (min-width: 640px) {
       display: inline-block;
       width: 50%;
@@ -21,8 +21,8 @@ export const Wrapper = Styled.article`
     }
   }
 
-  .pokemon-detail-info-wrapper,
-  .pokemon-detail-special-wrapper {
+  .info-wrapper,
+  .special-wrapper {
     display: block;
     width: 100%;
     border: 2px solid #eeeeee;
@@ -32,13 +32,13 @@ export const Wrapper = Styled.article`
     clear: both;
   }
 
-  .pokemon-detail-special-wrapper {
+  .special-wrapper {
     border-bottom: 0;
     margin-bottom: 0;
     padding-bottom: 0;
   }
 
-  ul:not(.pokemon-detail--abilities):not(.pokemon-detail--stats) {
+  ul:not(.abilities):not(.stats) {
     padding: 0;
   }
 `;
