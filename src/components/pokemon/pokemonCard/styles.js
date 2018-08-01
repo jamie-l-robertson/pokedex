@@ -6,7 +6,7 @@ export const Card = Styled.article`
   margin: 10px;
   padding: 10px;
   min-width: 120px;
-  background-color: #EEEEEE;
+  background-color: rgba(255, 255, 255, 0.8);
   text-align: center;
   border-radius: 3px;
 
@@ -34,7 +34,7 @@ export const Card = Styled.article`
       top: 10px;
       right: 10px;
       z-index: 1;
-      color: #CCCCCC;
+      color: #0C0C0C;
       font-size: 20px;
     }
   }

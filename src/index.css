@@ -18,6 +18,9 @@ body {
 html,
 body {
   width: 100%;
+  height: 100%;
+  background: #c6f2e1; /* Old browsers */
+  background: linear-gradient(135deg, #c6f2e1 0%, #80edc3 100%);
 }
 
 .loading {
@@ -35,7 +38,6 @@ body {
 }
 
 /* types */
-
 
 [class*='pill-'] {
   display: inline-block;

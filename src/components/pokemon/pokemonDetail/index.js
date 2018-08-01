@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Loader from '../../loader';
+import { Pagination } from '../pagination';
 import { Link } from 'react-router-dom';
 import { Sprite } from '../sprite';
 import { Wrapper } from './styles';
@@ -56,11 +57,11 @@ class PokemonDetail extends Component {
               .then(response => response.json())
               .then(json => {
                 const description = json.flavor_text_entries.find(x => x.language.name === 'en');
-                const alolan = json.varieties.find(p => p.pokemon.name.includes('alola'));
+                const alolan = json.varieties.find(p => p.pokemon.name.includes('alola') && p.pokemon.n);
                 let alolanSprite;
 
                 if (alolan) {
-                  id === '25' ? (alolanSprite = '25-alola-cap') : (alolanSprite = id + '-alola');
+                  alolanSprite = id;
                 }
 
                 this.setState({
@@ -154,12 +155,7 @@ class PokemonDetail extends Component {
               </ul>
             </div>
           </div>
-          <Link to={`/pokedex/pokemon/${poke.id - 1}`} className="btn">
-            &laquo; Previous Pokemon
-          </Link>
-          <Link to={`/pokedex/pokemon/${poke.id + 1}`} className="btn btn-right">
-            Next Pokemon &raquo;
-          </Link>
+          <Pagination current={poke.id} />
         </Wrapper>
       );
     } else if (loading && !fetched) {
