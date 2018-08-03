@@ -12,6 +12,8 @@ const POKEMON_Q = gql`
       ... on Pokemon {
         name
         pokeId
+        pokemonType
+        pokemonSecondaryType
       }
     }
   }
