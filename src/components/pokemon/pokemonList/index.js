@@ -1,23 +1,12 @@
 import React, { Component } from 'react';
 import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
 import Pokemon from '../pokemonCard';
 import Loader from '../../loader';
 import { Search } from '../../search';
 import { List } from './styles';
 
-const POKEMON_Q = gql`
-  query PokemonList($name: String) {
-    pokemons(where: { name_contains: $name }) {
-      ... on Pokemon {
-        name
-        pokeId
-        pokemonType
-        pokemonSecondaryType
-      }
-    }
-  }
-`;
+// Queries
+import POKEMON_LIST_Q from '../../../thread/queries/getPokeList';
 
 class PokemonList extends Component {
   state = {
@@ -63,7 +52,7 @@ class PokemonList extends Component {
           handleInputClear={this.handleInputClear}
         />
         <List>
-          <Query query={POKEMON_Q} variables={{ name: this.state.filter }}>
+          <Query query={POKEMON_LIST_Q} variables={{ name: this.state.filter }}>
             {({ loading, error, data }) => {
               return (
                 <React.Fragment>

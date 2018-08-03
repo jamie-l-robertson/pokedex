@@ -1,50 +1,14 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
 import Loader from '../../loader';
 import { Pagination } from '../pagination';
 import { Link } from 'react-router-dom';
 import { Sprite } from '../sprite';
 import { PillList } from '../pillList';
-import { Pill } from '../pill';
 import { Wrapper } from './styles';
 
-// Segment parts out into smaller components
-
-const POKEMON_DETAIL_Q = gql`
-  query PokemonDetail($pokeid: [Int!]) {
-    pokemons(where: { pokeId_in: $pokeid }) {
-      ... on Pokemon {
-        pokeId
-        name
-        rarity
-        fleeRate
-        maxCP
-        maxHP
-        maxAttack
-        maxDefence
-        maxStamina
-        alolanForm
-        shinyAvailable
-        raidBoss
-        perfectIvs
-        eggDistance
-        legacyMovesTable
-        buddydistance
-        evolveCandy
-        evolvmentTable
-        description
-        shortDescription
-        generation
-        pokemonType
-        pokemonSecondaryType
-        strengths
-        weakness
-      }
-    }
-  }
-`;
+// QUERIES
+import POKEMON_DETAIL_Q from '../../../thread/queries/getPokeDetail';
 
 class PokemonDetail extends Component {
   render() {
