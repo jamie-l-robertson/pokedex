@@ -4,7 +4,7 @@ export const Wrapper = Styled.article`
   display: block;
   max-width: 600px;
   margin: 20px auto;
-  padding: 20px;
+  padding: 30px 20px 20px;
   background-color: #FFFFFF;
   border-radius: 5px;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);

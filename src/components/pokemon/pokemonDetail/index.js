@@ -3,8 +3,11 @@ import { Query } from 'react-apollo';
 import Loader from '../../loader';
 import { Pagination } from '../pagination';
 import { Link } from 'react-router-dom';
-import { Sprite } from '../sprite';
-import { PillList } from '../pillList';
+import { DetailHeader } from './detailHeader';
+import { DetailDescription } from './detailDescription';
+import { Stats } from './stats';
+import { IvTable } from './ivTable';
+import { Evolutions } from './evolutions';
 import { Wrapper } from './styles';
 
 // QUERIES
@@ -15,14 +18,13 @@ class PokemonDetail extends Component {
     return (
       <React.Fragment>
         <Query query={POKEMON_DETAIL_Q} variables={{ pokeid: this.props.match.params.id }}>
-          {({ loading, error, data }) => {
+          {({ loading, error, data, client }) => {
             const {
               pokeId,
               name,
               rarity,
               fleeRate,
               maxCP,
-              maxHP,
               maxAttack,
               maxDefence,
               maxStamina,
@@ -45,6 +47,8 @@ class PokemonDetail extends Component {
             } =
               data.pokemons && data.pokemons[0] ? data.pokemons[0] : {};
 
+            let content;
+
             const gen = data.pokemons && data.pokemons[0] ? generation.split('_').pop() : '';
             const pivs = data.pokemons && data.pokemons[0] ? perfectIvs.cp : null;
             const legacy = data.pokemons && data.pokemons[0] ? legacyMovesTable : null;
@@ -58,76 +62,48 @@ class PokemonDetail extends Component {
                 : null
               : null;
 
-            return (
-              <React.Fragment>
-                {error ? <div>{error}</div> : null}
-                {loading ? (
+            if (loading) {
+              content = (
+                <Wrapper>
                   <p className="loading">
                     <Loader />Loading...
                   </p>
-                ) : null}
-                <Link to="/pokedex" className="btn">
-                  &laquo; Back to List
-                </Link>
-                <Wrapper>
-                  <header>
-                    <h1>
-                      {name} - #{pokeId} {shinyAvailable ? '***' : null}
-                    </h1>
-                    <Sprite id={pokeId} alt="Normal variant" />
-                    {types ? <PillList data={types} /> : null}
-                  </header>
-                  <div>
-                    <h2>{shortDescription}</h2>
-                    <p>{description}</p>
-                    <p>Generation: {gen}</p>
-                    {weakness ? <PillList data={weakness} title="Weakness" /> : null}
-                    {strengths ? <PillList data={strengths} title="Strengths" /> : null}
-                    <p>Rarity: {rarity}</p>
-                    <p>Flee Rate: {fleeRate}</p>
-                    <p>Max CP: {maxCP}</p>
-                    <p>Max HP: {maxHP}</p>
-                    <p>Max Stamina: {maxStamina}</p>
-                    <p>Max Attack: {maxAttack}</p>
-                    <p>Max Defense: {maxDefence}</p>
-                    {alolanForm ? <p>Alolan form available</p> : null}
-                    {raidBoss ? <p>Active raid boss</p> : null}
-                    <h3>Perfect IVs</h3>
-                    <ul>
-                      {pivs && pivs.length ? (
-                        pivs.map((iv, i) => <li key={`iv-` + i}>{iv}</li>)
-                      ) : (
-                        <li>Loading IVs...</li>
-                      )}
-                    </ul>
-                    <p>{eggDistance ? 'Hatches from: ' + eggDistance + 'km' : 'Doesnt hatch from an egg'}</p>
-                    <p>{evolveCandy ? 'Evolve cost: ' + evolveCandy + ' Candy' : 'Doesnt evolve'}</p>
-                    <p>{buddydistance ? 'Buddy candy distance: ' + buddydistance + ' km' : null}</p>
-                    <ul>
-                      {legacy && legacy.length ? legacy.map((leg, i) => <li key={`legacy-` + i}>{leg}</li>) : null}
-                    </ul>
-
-                    {evolvements && evolvements.length ? (
-                      <ul>
-                        <li>
-                          <Sprite id={pokeId} />
-                          {name} - #{pokeId};
-                        </li>
-                        {evolvements && evolvements.length
-                          ? evolvements.map((evolvement, i) => (
-                              <li key={`evolvement-` + i}>
-                                <Sprite id={evolvement.id} />
-                                {evolvement.name} #{evolvement.id}
-                              </li>
-                            ))
-                          : null}
-                      </ul>
-                    ) : null}
-                  </div>
                 </Wrapper>
-                <Pagination current={pokeId} />
-              </React.Fragment>
-            );
+              );
+            } else if (error) {
+              content = (
+                <Wrapper>
+                  <div>{error}</div>
+                </Wrapper>
+              );
+            } else {
+              content = (
+                <React.Fragment>
+                  <Link to="/pokedex" className="btn">
+                    &laquo; Back to List
+                  </Link>
+                  <Wrapper>
+                    <DetailHeader data={{ name, pokeId, shinyAvailable, types, alolanForm, eggDistance, rarity }} />
+                    <DetailDescription data={{ shortDescription, description, gen }} />
+                    <Stats data={{ weakness, strengths, maxCP, maxAttack, maxDefence, maxStamina }} />
+                    <IvTable data={pivs} title="Perfect IVs by lvl" />
+                    <Evolutions data={{ evolvements, pokeId, name }} />
+                    <div>
+                      <ul>
+                        {legacy && legacy.length ? legacy.map((leg, i) => <li key={`legacy-` + i}>{leg}</li>) : null}
+                      </ul>
+
+                      {raidBoss ? <p>Active raid boss</p> : null}
+                      <p>{evolveCandy ? 'Evolve cost: ' + evolveCandy + ' Candy' : 'Doesnt evolve'}</p>
+                      <p>{buddydistance ? 'Buddy candy distance: ' + buddydistance + ' km' : null}</p>
+                    </div>
+                  </Wrapper>
+                  <Pagination current={pokeId} provider={client} />
+                </React.Fragment>
+              );
+            }
+
+            return content;
           }}
         </Query>
       </React.Fragment>

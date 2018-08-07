@@ -2,11 +2,12 @@ import Styled from 'styled-components';
 
 export const Item = Styled.li`
   display: inline-block;
-  padding: 3px 5px;
-  border-radius: 3px;
+  padding: 3px 10px;
+  border-radius: 15px;
   list-style: none;
   margin: 0 8px 8px 0;
   text-transform: capitalize;
+  font-size: 14px;
 
   &.pill-normal {
     color: #0c0c0c;
