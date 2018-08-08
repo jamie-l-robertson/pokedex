@@ -23,6 +23,8 @@ class PokemonList extends Component {
   }
 
   handleInputChange(evt) {
+    console.log(evt.target.value);
+
     this.setState({
       filter: evt.target.value,
     });
@@ -62,7 +64,8 @@ class PokemonList extends Component {
                       <Loader />Loading...
                     </p>
                   ) : null}
-                  {data.pokemons && data.pokemons.map(poke => <Pokemon key={poke.name} pokemon={poke} />)}
+                  {data.pokemons &&
+                    data.pokemons.map(poke => <Pokemon key={`poke-list-${poke.pokeId}`} pokemon={poke} />)}
                 </React.Fragment>
               );
             }}
