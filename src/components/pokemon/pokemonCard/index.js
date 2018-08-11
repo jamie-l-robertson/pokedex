@@ -1,8 +1,8 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { Sprite } from '../sprite';
-import { Card } from './styles';
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import { Sprite } from "../sprite";
+import { Card } from "./styles";
 
 class Pokemon extends PureComponent {
   render() {
@@ -10,7 +10,7 @@ class Pokemon extends PureComponent {
 
     return (
       <Card>
-        <Link to={`/pokedex/pokemon/${pokemon.pokeId}`} id={pokemon.pokeId}>
+        <Link to={`/pokemon/${pokemon.pokeId}`} id={pokemon.pokeId}>
           <Sprite id={pokemon.pokeId} alt={pokemon.name} />
           <h2>
             {pokemon.name} <span>#{pokemon.pokeId}</span>
@@ -22,7 +22,7 @@ class Pokemon extends PureComponent {
 }
 
 Pokemon.propTypes = {
-  pokemon: PropTypes.object.isRequired,
+  pokemon: PropTypes.object.isRequired
 };
 
 export default Pokemon;
