@@ -23,7 +23,7 @@ const client = new ApolloClient({
   uri: process.env.REACT_APP_GRAPHQL_ENDPOINT,
   cache,
 });
-
+console.log(process.env.REACT_APP_GRAPHQL_ENDPOINT)
 ReactDOM.render(
   <BrowserRouter basename={process.env.PUBLIC_URL}>
     <ApolloProvider client={client}>
