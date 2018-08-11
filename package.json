@@ -2,7 +2,7 @@
   "name": "pokemon-go-dex",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ru7hl355.github.io/pokedex",
+  "homepage": "https://ru7hl355.github.io/",
   "dependencies": {
     "apollo": "^1.6.0",
     "apollo-boost": "^0.1.12",
