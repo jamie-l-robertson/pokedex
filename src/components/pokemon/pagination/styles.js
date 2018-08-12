@@ -4,6 +4,7 @@ export const PaginationWrapper = Styled.footer`
     display: block;
     max-width: 90%;
     margin: 0 auto 20px;
+    overflow: hidden;
 
     @media (min-width: 600px) {
         max-width: 600px;
