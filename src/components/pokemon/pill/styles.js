@@ -1,4 +1,4 @@
-import Styled from 'styled-components';
+import Styled from "styled-components";
 
 export const Item = Styled.li`
   display: inline-block;
@@ -10,93 +10,93 @@ export const Item = Styled.li`
   font-size: 14px;
 
   &.pill-normal {
-    color: #0c0c0c;
-    background-color: #eeeeee;
+    color: #FFFFFF;
+    background-color: #4A4A4A;
   }
   
   &.pill-electric {
-    color: #0c0c0c;
-    background-color: yellow;
+    color: #FFFFFF;
+    background-color: #FFC107;
   }
   
   &.pill-fighting {
     color: #ffffff;
-    background-color: brown;
+    background-color: #F44336;
   }
   
   &.pill-psychic {
     color: #ffffff;
-    background-color: purple;
+    background-color: #9C27B0;
   }
   
   &.pill-dark {
     color: #ffffff;
-    background-color: grey;
+    background-color: #263238;
   }
   
   &.pill-ghost {
     color: #ffffff;
-    background-color: blueviolet;
+    background-color: #E2E2E2;
   }
   
   &.pill-grass {
     color: #ffffff;
-    background-color: green;
+    background-color: #4CAF50;
   }
   
   &&.pill-fire {
     color: #ffffff;
-    background-color: red;
+    background-color: #FF5722;
   }
   
   &&.pill-water {
-    color: #0c0c0c;
-    background-color: aqua;
+    color: #FFFFFF;
+    background-color: #2196F3;
   }
   
   &&.pill-steel {
-    color: #0c0c0c;
-    background-color: silver;
+    color: #FFFFFF;
+    background-color: #607D8B;
   }
   
   &&.pill-fairy {
     color: #ffffff;
-    background-color: salmon;
+    background-color: #E91E63;
   }
   
   &&.pill-flying {
-    color: #0c0c0c;
-    background-color: skyblue;
+    color: #FFFFFF;
+    background-color: #2962FF;
   }
   
   &&.pill-rock {
-    color: #0c0c0c;
-    background-color: gainsboro;
+    color: #FFFFFF;
+    background-color: #9E9E9E;
   }
   
   &&.pill-bug {
-    color: #0c0c0c;
-    background-color: greenyellow;
+    color: #FFFFFF;
+    background-color: #009688;
   }
   
   &&.pill-ground {
-    color: #0c0c0c;
-    background-color: burlywood;
+    color: #FFFFFF;
+    background-color: #795548;
   }
   
   &.pill-dragon {
     color: #ffffff;
-    background-color: navy;
+    background-color: #5C6BC0;
   }
   
   &.pill-poison {
     color: #ffffff;
-    background-color: rgb(92, 0, 128);
+    background-color: #21D0A9;
   }
   
   &.pill-ice {
-    color: #0c0c0c;
-    background-color: rgb(137, 236, 253);
+    color: #FFFFFF;
+    background-color: #81D4FA;
   }
   
 `;

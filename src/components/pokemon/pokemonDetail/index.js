@@ -8,7 +8,7 @@ import { DetailDescription } from "./detailDescription";
 import { Stats } from "./stats";
 import { IvTable } from "./ivTable";
 import { Evolutions } from "./evolutions";
-import { Wrapper } from "./styles";
+import { Wrapper, HeaderControls } from "./styles";
 
 // QUERIES
 import POKEMON_DETAIL_Q from "../../../thread/queries/getPokeDetail";
@@ -47,8 +47,7 @@ class PokemonDetail extends Component {
               pokemonSecondaryType,
               strengths,
               weakness
-            } =
-              data.pokemons && data.pokemons[0] ? data.pokemons[0] : {};
+            } = data.pokemons && data.pokemons[0] ? data.pokemons[0] : {};
 
             let content;
 
@@ -75,7 +74,7 @@ class PokemonDetail extends Component {
               content = (
                 <Wrapper>
                   <p className="loading">
-                    <Loader />Loading...
+                    <Loader />
                   </p>
                 </Wrapper>
               );
@@ -88,9 +87,11 @@ class PokemonDetail extends Component {
             } else {
               content = (
                 <React.Fragment>
-                  <Link to="/" className="btn">
-                    &laquo; Back to List
-                  </Link>
+                  <HeaderControls>
+                    <Link to="/" className="btn">
+                      Back to List
+                    </Link>
+                  </HeaderControls>
                   <Wrapper>
                     <DetailHeader
                       data={{
@@ -131,7 +132,7 @@ class PokemonDetail extends Component {
                       <p>
                         {evolveCandy
                           ? "Evolve cost: " + evolveCandy + " Candy"
-                          : "Doesnt evolve"}
+                          : null}
                       </p>
                       <p>
                         {buddydistance

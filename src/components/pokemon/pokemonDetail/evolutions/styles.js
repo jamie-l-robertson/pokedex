@@ -1,4 +1,4 @@
-import Styled from 'styled-components';
+import Styled from "styled-components";
 
 export const EvolveWrapper = Styled.div`
   display: block;
@@ -29,8 +29,12 @@ export const EvolveWrapper = Styled.div`
         background-color: #EEEEEE;
         position: absolute;
         left: 50%;
-        top: 48px;
+        top: 23px;
         z-index: 1;
+
+        @media (min-width: 600px) {
+          top: 48px;
+        }
       }
 
       &:last-child {
@@ -44,9 +48,14 @@ export const EvolveWrapper = Styled.div`
       position: relative;
       z-index: 3;
       display: block;
+      width: 46px;
       margin: 0 auto;
       border-radius: 100%;
       background-color: #EEEEEE;
+
+      @media (min-width: 600px) {
+        width: 96px;
+      }
     }
 
     a {

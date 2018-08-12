@@ -1,5 +1,5 @@
-import React from 'react';
-import { SliderWrapper } from './styles';
+import React from "react";
+import { SliderWrapper } from "./styles";
 
 export const Slider = props => {
   const { max } = props;
@@ -7,7 +7,7 @@ export const Slider = props => {
   function positionHandler(val) {
     const pos = (100 * val) / max;
 
-    return pos > 10 ? pos : 10;
+    return pos > 25 ? pos : 25;
   }
 
   return (

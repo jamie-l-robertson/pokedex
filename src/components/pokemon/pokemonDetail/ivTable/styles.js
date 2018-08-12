@@ -1,4 +1,4 @@
-import Styled from 'styled-components';
+import Styled from "styled-components";
 
 export const TableWrapper = Styled.div`
   display: block;
@@ -7,6 +7,10 @@ export const TableWrapper = Styled.div`
   overflow: hidden;
   margin-bottom: 20px;
   padding-bottom: 15px;
+
+  .table-wrapper {
+    overflow: scroll;
+  }
 `;
 
 export const Table = Styled.table`
