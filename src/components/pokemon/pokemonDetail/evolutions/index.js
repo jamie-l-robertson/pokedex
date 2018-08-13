@@ -12,10 +12,6 @@ export const Evolutions = props => {
         <EvolveWrapper>
           <h2>Evolutions</h2>
           <ul>
-            <li>
-              <Sprite id={pokeId} />
-              {name}
-            </li>
             {evolvements && evolvements.length
               ? evolvements.map((evolvement, i) => (
                   <li key={`evolvement-` + i}>
