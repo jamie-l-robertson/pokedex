@@ -1,4 +1,4 @@
-import Styled from "styled-components";
+import Styled from 'styled-components';
 
 export const EvolveWrapper = Styled.div`
   display: block;
@@ -7,6 +7,10 @@ export const EvolveWrapper = Styled.div`
   overflow: hidden;
   margin-bottom: 20px;
   padding-bottom: 15px;
+
+  h2 {
+    font-size: 18px;
+  }
 
   ul {
     display: flex;

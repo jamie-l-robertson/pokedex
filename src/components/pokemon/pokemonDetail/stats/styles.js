@@ -12,4 +12,8 @@ export const StatsWrapper = Styled.div`
     margin-bottom: 30px;
     border-bottom: 2px solid #EEEEEE;
   }
+
+  h2 {
+    font-size: 18px;
+  }
 `;

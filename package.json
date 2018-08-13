@@ -1,8 +1,8 @@
 {
   "name": "pokemon-go-dex",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
-  "homepage": "https://ru7hl355.github.io/",
+  "homepage": "http://pokehelper.netlify.com",
   "dependencies": {
     "apollo": "^1.6.0",
     "apollo-boost": "^0.1.12",

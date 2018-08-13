@@ -1,4 +1,4 @@
-import Styled from "styled-components";
+import Styled from 'styled-components';
 
 export const DetailHeaderWrapper = Styled.header`
   display: block;
@@ -35,10 +35,15 @@ export const DetailHeaderWrapper = Styled.header`
   }
 
   .icon {
-    display: inline;
+    display: inline-block;
     font-size: 14px;
     vertical-align: top;
     margin: 0 2px;
+
+    svg {
+      width: 20px;
+      height: auto;
+    }
     
     &[title] {
       cursor: pointer;
@@ -59,6 +64,10 @@ export const DetailHeaderWrapper = Styled.header`
         bottom: 20px;
         right: 10px;
         margin: 0;
+      }
+
+      svg {
+        fill: red;
       }
     }
   }
