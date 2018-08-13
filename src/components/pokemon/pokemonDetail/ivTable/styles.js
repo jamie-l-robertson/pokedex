@@ -1,4 +1,4 @@
-import Styled from "styled-components";
+import Styled from 'styled-components';
 
 export const TableWrapper = Styled.div`
   display: block;
@@ -20,6 +20,10 @@ export const Table = Styled.table`
   font-size: 14px;
   border-collapse: collapse;
   width: 100%;
+
+  h2 {
+    font-size: 18px;
+  }
 
   thead th {
     background: #EEEEEE;
