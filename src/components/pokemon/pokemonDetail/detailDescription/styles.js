@@ -7,4 +7,12 @@ export const DetailDescriptionWrapper = Styled.div`
   overflow: hidden;
   margin-bottom: 20px;
   padding-bottom: 15px;
+
+  h2 {
+    font-size: 18px;
+  }
+
+  .region {
+    color: #145959;
+  }
 `;

@@ -1,4 +1,4 @@
-import Styled from "styled-components";
+import Styled from 'styled-components';
 
 export const Searchbox = Styled.div`
   position: fixed;
@@ -23,6 +23,7 @@ export const Searchbox = Styled.div`
     border-radius: 20px 0 0 20px;
     height: 34px;
     vertical-align: top;
+    -webkit-appearance: none;
   }
 
   button {
@@ -36,5 +37,6 @@ export const Searchbox = Styled.div`
     border: 0;
     height: 34px;
     font-size: 14px;
+    cursor: pointer;
   }
 `;

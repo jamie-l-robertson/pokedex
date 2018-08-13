@@ -24,7 +24,11 @@ export const DetailDescription = props => {
     <DetailDescriptionWrapper>
       <h2>{shortDescription}</h2>
       <p>{description}</p>
-      {generation != null ? <p>Origin: {generation}</p> : null}
+      {generation != null ? (
+        <p>
+          Origin: <span className="region">{generation}</span>
+        </p>
+      ) : null}
     </DetailDescriptionWrapper>
   );
 };
