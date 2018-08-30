@@ -31,10 +31,13 @@ export const Card = Styled.article`
 
     span {
       position: absolute;
-      top: 10px;
-      right: 10px;
-      z-index: 1;
+      top: 5px;
+      right: 5px;
+      z-index: 2;
       font-size: 20px;
+      background-color: rgba(255,255,255,0.7);
+      border-radius: 40px;
+      padding: 0 10px;
     }
   }
 

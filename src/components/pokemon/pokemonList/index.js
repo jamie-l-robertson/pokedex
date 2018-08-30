@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import { Query } from 'react-apollo';
-import Pokemon from '../pokemonCard';
-import Loader from '../../loader';
-import { Search } from '../../search';
-import { List } from './styles';
+import React, { Component } from "react";
+import { Query } from "react-apollo";
+import Pokemon from "../pokemonCard";
+import Loader from "../../loader";
+import { Search } from "../../search";
+import { List } from "./styles";
 
 // Queries
-import POKEMON_LIST_Q from '../../../thread/queries/getPokeList';
+import POKEMON_LIST_Q from "../../../thread/queries/getPokeList";
 
 class PokemonList extends Component {
   state = {
     fetched: false,
     loading: false,
-    filter: '',
+    filter: ""
   };
 
   constructor() {
@@ -26,7 +26,7 @@ class PokemonList extends Component {
     console.log(evt.target.value);
 
     this.setState({
-      filter: evt.target.value,
+      filter: evt.target.value
     });
   }
 
@@ -34,14 +34,14 @@ class PokemonList extends Component {
     evt.preventDefault();
 
     this.setState({
-      filter: '',
+      filter: ""
     });
   }
 
   componentDidMount() {
     this.setState({
       loading: true,
-      filter: '',
+      filter: ""
     });
   }
 
@@ -65,7 +65,15 @@ class PokemonList extends Component {
                     </div>
                   ) : null}
                   {data.pokemons &&
-                    data.pokemons.map(poke => <Pokemon key={`poke-list-${poke.pokeId}`} pokemon={poke} />)}
+                    data.pokemons.map(
+                      poke =>
+                        poke.status === "PUBLISHED" ? (
+                          <Pokemon
+                            key={`poke-list-${poke.pokeId}`}
+                            pokemon={poke}
+                          />
+                        ) : null
+                    )}
                 </React.Fragment>
               );
             }}
