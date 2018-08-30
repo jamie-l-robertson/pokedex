@@ -23,7 +23,7 @@ export const Pagination = props => {
           # {(current - 1).toString()}
         </Link>
       ) : null}
-      {current + 1 < 153 ? (
+      {current + 1 < 251 ? (
         <Link
           to={`/pokemon/${current + 1}`}
           className="btn btn--next"
