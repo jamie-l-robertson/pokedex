@@ -10,7 +10,7 @@ export const DetailHeaderWrapper = Styled.header`
 
   > img {
     display: block;
-    max-width: 220px;
+    max-width: 200px;
     margin: 0 auto 15px;
     border-radius: 100%;
     background-color: #EEEEEE;
