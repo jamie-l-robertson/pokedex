@@ -15,7 +15,7 @@ export const DetailHeaderWrapper = Styled.header`
     background-color: #EEEEEE;
 
     @media (min-width: 600px) {
-      max-width: 100px;
+      max-width: 140px;
       float: left;
       margin: 0;
     }
@@ -25,7 +25,7 @@ export const DetailHeaderWrapper = Styled.header`
     text-align: center;
 
     @media (min-width: 600px) {
-      padding-left: 112px;
+      padding-left: 160px;
       vertical-align: top;
       text-align: left;
     }
