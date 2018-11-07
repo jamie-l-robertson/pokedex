@@ -1,24 +1,22 @@
-import React from 'react';
+import React from "react";
 
 export const Egg = props => {
   const { distance } = props;
   let color;
 
-  console.log(props);
-
   switch (distance) {
     case 2:
-      color = '#74DD6F';
+      color = "#74DD6F";
       break;
     case 5:
-      color = '#DDA812';
+      color = "#DDA812";
       break;
 
     case 10:
-      color = '#5802BA';
+      color = "#5802BA";
       break;
     default:
-      color = '#145959';
+      color = "#145959";
   }
 
   return (

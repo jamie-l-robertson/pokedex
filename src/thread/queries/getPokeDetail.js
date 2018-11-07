@@ -1,9 +1,10 @@
-import gql from 'graphql-tag';
+import gql from "graphql-tag";
 
 const POKEMON_DETAIL_Q = gql`
   query PokemonDetail($pokeid: [Int!]) {
     pokemons(where: { pokeId_in: $pokeid }) {
       ... on Pokemon {
+        status
         pokeId
         name
         rarity
@@ -29,6 +30,11 @@ const POKEMON_DETAIL_Q = gql`
         pokemonSecondaryType
         strengths
         weakness
+      }
+    }
+    pokemonsConnection(where: { status: PUBLISHED }) {
+      aggregate {
+        count
       }
     }
   }

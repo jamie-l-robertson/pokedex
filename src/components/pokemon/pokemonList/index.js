@@ -8,6 +8,8 @@ import { List } from "./styles";
 // Queries
 import POKEMON_LIST_Q from "../../../thread/queries/getPokeList";
 
+let totalPokemon = 0;
+
 class PokemonList extends Component {
   state = {
     fetched: false,
@@ -23,8 +25,6 @@ class PokemonList extends Component {
   }
 
   handleInputChange(evt) {
-    console.log(evt.target.value);
-
     this.setState({
       filter: evt.target.value
     });
@@ -65,14 +65,13 @@ class PokemonList extends Component {
                     </div>
                   ) : null}
                   {data.pokemons &&
-                    data.pokemons.map(
-                      poke =>
-                        poke.status === "PUBLISHED" ? (
-                          <Pokemon
-                            key={`poke-list-${poke.pokeId}`}
-                            pokemon={poke}
-                          />
-                        ) : null
+                    data.pokemons.map(poke =>
+                      poke.status === "PUBLISHED" ? (
+                        <Pokemon
+                          key={`poke-list-${poke.pokeId}`}
+                          pokemon={poke}
+                        />
+                      ) : null
                     )}
                 </React.Fragment>
               );

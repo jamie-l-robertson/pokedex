@@ -1,4 +1,4 @@
-import Styled from 'styled-components';
+import Styled from "styled-components";
 
 export const DetailHeaderWrapper = Styled.header`
   display: block;
@@ -10,11 +10,12 @@ export const DetailHeaderWrapper = Styled.header`
 
   > img {
     display: block;
-    margin: 0 auto 5px;
+    margin: 0 auto 15px;
     border-radius: 100%;
     background-color: #EEEEEE;
 
     @media (min-width: 600px) {
+      max-width: 100px;
       float: left;
       margin: 0;
     }
@@ -41,8 +42,9 @@ export const DetailHeaderWrapper = Styled.header`
     margin: 0 2px;
 
     svg {
-      width: 20px;
+      width: 25px;
       height: auto;
+      margin-left: 5px;
     }
     
     &[title] {

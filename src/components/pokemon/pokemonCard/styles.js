@@ -22,6 +22,7 @@ export const Card = Styled.article`
   img {
     position: relative;
     z-index: 2;
+    max-width: 130px;
   }
 
   h2 {
