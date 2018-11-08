@@ -1,18 +1,19 @@
-import React, { Component } from 'react';
-import Pokemon from '../pokemonCard';
-import Loader from '../../loader';
-import { Search } from '../../search';
-import { List } from './styles';
+import React, { Component } from "react";
+import { Query } from "react-apollo";
+import Pokemon from "../pokemonCard";
+import Loader from "../../loader";
+import { Search } from "../../search";
+import { List } from "./styles";
 
-const InitialState = {
-  species: [],
-  fetched: false,
-  loading: false,
-  filter: '',
-};
+// Queries
+import POKEMON_LIST_Q from "../../../thread/queries/getPokeList";
 
 class PokemonList extends Component {
-  state = localStorage.getItem('appState') ? JSON.parse(localStorage.getItem('appState')) : InitialState;
+  state = {
+    fetched: false,
+    loading: false,
+    filter: ""
+  };
 
   constructor() {
     super();
@@ -23,7 +24,7 @@ class PokemonList extends Component {
 
   handleInputChange(evt) {
     this.setState({
-      filter: evt.target.value,
+      filter: evt.target.value
     });
   }
 
@@ -31,62 +32,52 @@ class PokemonList extends Component {
     evt.preventDefault();
 
     this.setState({
-      filter: '',
+      filter: ""
     });
   }
 
   componentDidMount() {
     this.setState({
       loading: true,
+      filter: ""
     });
-
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=385')
-      .then(response => response.json())
-      .then(json => {
-        this.setState({
-          species: json.results,
-          loading: true,
-          fetched: true,
-        });
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }
-
-  componentWillUnmount() {
-    localStorage.setItem('appState', JSON.stringify(this.state));
   }
 
   render() {
-    const { fetched, loading, species, filter } = this.state;
-    const filtered = species
-      .filter(e => e.name.includes(filter.toLowerCase()))
-      .map((poke, index) => <Pokemon key={poke.name} pokemon={poke} />);
-    let content;
-
-    if (fetched) {
-      content = (
-        <React.Fragment>
-          <Search
-            filter={this.state.filter}
-            handleInputChange={this.handleInputChange}
-            handleInputClear={this.handleInputClear}
-          />
-          <List>{filtered.length ? filtered : 'No Pokemon by that name'}</List>
-        </React.Fragment>
-      );
-    } else if (loading && !fetched) {
-      content = (
-        <p className="loading">
-          <Loader />Loading...
-        </p>
-      );
-    } else {
-      content = <div />;
-    }
-
-    return <React.Fragment>{content}</React.Fragment>;
+    return (
+      <React.Fragment>
+        <Search
+          filter={this.state.filter}
+          handleInputChange={this.handleInputChange}
+          handleInputClear={this.handleInputClear}
+        />
+        <List>
+          <Query query={POKEMON_LIST_Q} variables={{ name: this.state.filter }}>
+            {({ loading, error, data }) => {
+              return (
+                <React.Fragment>
+                  {error ? <div>{error}</div> : null}
+                  {loading ? (
+                    <div className="loading">
+                      <Loader />
+                    </div>
+                  ) : null}
+                  {data.pokemons &&
+                    data.pokemons.map(poke =>
+                      poke.status === "PUBLISHED" ? (
+                        <Pokemon
+                          key={`poke-list-${poke.pokeId}`}
+                          pokemon={poke}
+                        />
+                      ) : null
+                    )}
+                </React.Fragment>
+              );
+            }}
+          </Query>
+        </List>
+      </React.Fragment>
+    );
   }
 }
 

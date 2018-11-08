@@ -4,7 +4,8 @@ import { Wrapper } from './styles';
 
 const NotFound = () => (
   <Wrapper>
-    <h3>404 page not found</h3>
+    <h1>404 page not found</h1>
+    <img src="/images/404.jpg" alt="Pikachu is very sorry!" className="error-img" />
     <p>We are sorry but the page you are looking for does not exist.</p>
     <Link to="/">Return to home</Link>
   </Wrapper>
