@@ -17,6 +17,10 @@ export const Card = Styled.article`
 
   &:hover {
     outline: 3px solid #145959;
+
+    img {
+      transform: scale(1.2); 
+    }
   }
 
   img {

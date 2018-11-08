@@ -8,8 +8,6 @@ import { List } from "./styles";
 // Queries
 import POKEMON_LIST_Q from "../../../thread/queries/getPokeList";
 
-let totalPokemon = 0;
-
 class PokemonList extends Component {
   state = {
     fetched: false,

@@ -20,18 +20,9 @@ export const Sprite = props => {
         props.id,
         0
       )}${props.revealShiny ? `_shiny` : ``}.png`}
+      alt={props.revealShiny ? props.alt + " shiny" : props.alt}
     />
   );
-
-  shiny = props.showShiny ? (
-    <img
-      src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${pad(
-        props.id,
-        0
-      )}__shiny.png`}
-      alt={`${props.alt} - Shiny`}
-    />
-  ) : null;
 
   alolan = props.alolan ? (
     <img

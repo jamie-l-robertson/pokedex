@@ -15,13 +15,17 @@ class DetailHeader extends Component {
     });
   }
 
+  // Reset shiny state if navigating to next/previous pokemon
+  componentWillReceiveProps() {
+    this.setState({ revealShiny: false });
+  }
+
   render() {
     const {
       name,
       pokeId,
       shinyAvailable,
       types,
-      alolanForm,
       eggDistance,
       rarity
     } = this.props.data;

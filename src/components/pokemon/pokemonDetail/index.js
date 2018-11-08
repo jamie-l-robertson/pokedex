@@ -12,7 +12,6 @@ import { Wrapper, HeaderControls } from "./styles";
 
 // QUERIES
 import POKEMON_DETAIL_Q from "../../../thread/queries/getPokeDetail";
-import POKEMON_COUNT_Q from "../../../thread/queries/getPokeCount";
 
 class PokemonDetail extends Component {
   render() {
@@ -27,7 +26,6 @@ class PokemonDetail extends Component {
               pokeId,
               name,
               rarity,
-              fleeRate,
               maxCP,
               maxAttack,
               maxDefence,

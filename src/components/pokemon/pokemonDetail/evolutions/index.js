@@ -4,7 +4,7 @@ import { Sprite } from "../../sprite";
 import { EvolveWrapper } from "./styles";
 
 export const Evolutions = props => {
-  const { evolvements, pokeId, name } = props.data;
+  const { evolvements, pokeId } = props.data;
 
   return (
     <React.Fragment>
