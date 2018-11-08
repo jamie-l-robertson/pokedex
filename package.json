@@ -1,8 +1,13 @@
 {
-  "name": "pokemon-go-dex",
-  "version": "0.2.0",
+  "name": "pokehelper",
+  "version": "1.0.0",
   "private": true,
   "homepage": "http://pokehelper.netlify.com",
+  "author": "Jamie Robertson",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ru7hl355/pokedex.git"
+  },
   "dependencies": {
     "apollo": "^1.6.0",
     "apollo-boost": "^0.1.12",
