@@ -2,15 +2,16 @@ import styled from "styled-components";
 
 export const StyledFooter = styled.footer`
   display: block;
-  max-width: 90%;
-  margin: 20px auto;
+  width: 90%;
+  margin: 20px auto 0;
   padding: 20px;
   background-color: #ffffff;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
 
   @media (min-width: 600px) {
-    max-width: 600px;
+    width: 100%;
+    border-radius: 0;
   }
 
   p {

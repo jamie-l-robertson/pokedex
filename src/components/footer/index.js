@@ -28,6 +28,9 @@ export const Footer = () => {
           PogoAssets
         </a>
       </p>
+      <p>
+        View project on <a href="https://github.com/ru7hl355/pokedex">Github</a>
+      </p>
     </StyledFooter>
   );
 };

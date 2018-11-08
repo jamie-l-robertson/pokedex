@@ -64,10 +64,6 @@ input {
   animation: pokeball-spin 0.8s infinite;
 }
 
-.pokedex {
-  padding-bottom: 20px;
-}
-
 [class*="pill-"] {
   display: inline-block;
   padding: 3px 5px;
