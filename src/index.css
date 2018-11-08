@@ -14,7 +14,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Signika', sans-serif;
+  font-family: "Signika", sans-serif;
   color: #a6b0b6;
 }
 
@@ -64,9 +64,11 @@ input {
   animation: pokeball-spin 0.8s infinite;
 }
 
-/* types */
+.pokedex {
+  padding-bottom: 20px;
+}
 
-[class*='pill-'] {
+[class*="pill-"] {
   display: inline-block;
   padding: 3px 5px;
   border-radius: 3px;
