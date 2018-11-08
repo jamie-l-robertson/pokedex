@@ -1,11 +1,21 @@
 {
-  "name": "pokemon-go-dex",
-  "version": "0.1.0",
+  "name": "pokehelper",
+  "version": "1.0.0",
   "private": true,
-  "homepage": "https://ru7hl355.github.io/pokedex",
+  "homepage": "http://pokehelper.netlify.com",
+  "author": "Jamie Robertson",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ru7hl355/pokedex.git"
+  },
   "dependencies": {
+    "apollo": "^1.6.0",
+    "apollo-boost": "^0.1.12",
     "gh-pages": "^1.1.0",
+    "graphql": "^0.13.2",
     "react": "^16.3.2",
+    "react-addons-css-transition-group": "^15.6.2",
+    "react-apollo": "^2.1.9",
     "react-dom": "^16.3.2",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
@@ -13,7 +23,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && cp src/_redirects build/_redirects",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",

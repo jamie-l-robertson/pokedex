@@ -6,33 +6,37 @@ export const Searchbox = Styled.div`
   width: 100%;
   padding: 10px;
   color: #ffffff;
-  background-color: #E1371F;
+  background-color: #FFFFFF;
   text-align: center;
   white-space: no-wrap;
+  border-bottom: 1px solid #EEEEEE;
 
   label {
-    color: #ffffff;
     margin-right: 5px;
   }
 
   input[type='text'] {
-    border: 0;
-    border-radius: 5px 0 0 5px;
-    padding: 5px;
-    font-size: 16px;
-    height: 28px;
+    border: 1px solid #EEEEEE;
+    padding: 5px 5px;
+    font-size: 14px;
     width: 120px;
+    border-radius: 20px 0 0 20px;
+    height: 34px;
+    vertical-align: top;
+    -webkit-appearance: none;
   }
 
   button {
     display: inline-block;
-    border: 0;
-    padding: 5px 10px;
-    border-radius: 0 5px 5px 0;
-    height: 28px;
-    vertical-align: bottom;
     color: #ffffff;
-    background-color: black;
+    margin-right: 10px;
+    padding: 5px 15px;
+    text-decoration: none;
+    background-color: #145959;
+    border-radius: 0 20px 20px 0; 
+    border: 0;
+    height: 34px;
+    font-size: 14px;
     cursor: pointer;
   }
 `;

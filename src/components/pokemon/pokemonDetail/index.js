@@ -1,184 +1,165 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Loader from '../../loader';
-import { Link } from 'react-router-dom';
-import { Sprite } from '../sprite';
-import { Wrapper } from './styles';
+import React, { Component } from "react";
+import { Query } from "react-apollo";
+import Loader from "../../loader";
+import Pagination from "../pagination";
+import { Link } from "react-router-dom";
+import DetailHeader from "./detailHeader";
+import { DetailDescription } from "./detailDescription";
+import { Stats } from "./stats";
+import { IvTable } from "./ivTable";
+import { Evolutions } from "./evolutions";
+import { Wrapper, HeaderControls } from "./styles";
 
-const InitialState = {
-  fetched: false,
-  loading: false,
-};
+// QUERIES
+import POKEMON_DETAIL_Q from "../../../thread/queries/getPokeDetail";
 
 class PokemonDetail extends Component {
-  state = InitialState;
-
-  componentDidMount() {
-    this.setState({ fetched: false });
-    this.getData(this.props.match.params.id);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    localStorage.setItem(`poke-${this.props.match.params.id}`, JSON.stringify(this.state));
-    this.setState({ fetched: false });
-    this.getData(nextProps.match.params.id);
-  }
-
-  componentWillUnmount() {
-    localStorage.setItem(`poke-${this.props.match.params.id}`, JSON.stringify(this.state));
-  }
-
-  getData(id) {
-    this.setState({
-      loading: true,
-    });
-
-    if (localStorage.getItem(`poke-${id}`)) {
-      this.setState(JSON.parse(localStorage.getItem(`poke-${id}`)));
-      return;
-    }
-
-    fetch('https://pokeapi.co/api/v2/pokemon/' + id)
-      .then(response => response.json())
-      .then(json => {
-        this.setState({
-          poke: json,
-        });
-
-        fetch(json.types[0].type.url)
-          .then(response => response.json())
-          .then(json => {
-            this.setState({
-              type: json,
-            });
-
-            fetch('https://pokeapi.co/api/v2/pokemon-species/' + id)
-              .then(response => response.json())
-              .then(json => {
-                const description = json.flavor_text_entries.find(x => x.language.name === 'en');
-                const alolan = json.varieties.find(p => p.pokemon.name.includes('alola'));
-                let alolanSprite;
-
-                if (alolan) {
-                  id === '25' ? (alolanSprite = '25-alola-cap') : (alolanSprite = id + '-alola');
-                }
-
-                this.setState({
-                  species: json,
-                  description: description.flavor_text,
-                  alolanForm: alolanSprite,
-                  loading: true,
-                  fetched: true,
-                });
-              })
-              .catch(error => {
-                console.log(error);
-              });
-          })
-          .catch(error => {
-            console.log(error);
-          });
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }
-
   render() {
-    const { fetched, loading, poke, type, species, description, alolanForm } = this.state;
-    let content;
+    return (
+      <React.Fragment>
+        <Query
+          query={POKEMON_DETAIL_Q}
+          variables={{ pokeid: this.props.match.params.id }}
+        >
+          {({ loading, error, data, client }) => {
+            const {
+              pokeId,
+              name,
+              rarity,
+              maxCP,
+              maxAttack,
+              maxDefence,
+              maxStamina,
+              alolanForm,
+              shinyAvailable,
+              raidBoss,
+              perfectIvs,
+              eggDistance,
+              legacyMovesTable,
+              buddydistance,
+              evolveCandy,
+              evolvmentTable,
+              description,
+              shortDescription,
+              generation,
+              pokemonType,
+              pokemonSecondaryType,
+              strengths,
+              weakness
+            } = data.pokemons && data.pokemons[0] ? data.pokemons[0] : {};
 
-    if (fetched) {
-      content = (
-        <Wrapper>
-          <Link to="/pokedex" className="btn">
-            &laquo; Back to List
-          </Link>
-          <header>
-            <h2 className="heading">
-              {poke.name} - #{poke.id}
-            </h2>
-            <Sprite id={poke.id} alt="Normal variant" showShiny alolan={alolanForm ? alolanForm : null} />
-          </header>
-          <div className="description">
-            <p>{description}</p>
-          </div>
-          <div className="trivia">
-            <p>Generation: {species.generation.name}</p>
-            <p>Habitat: {species.habitat.name}</p>
-          </div>
-          <div className="stats-wrapper">
-            <h3>Stats:</h3>
-            <ul className="stats">
-              <li>height: {poke.height}(WTF?)</li>
-              <li>weight: {poke.weight}lb</li>
-            </ul>
-          </div>
-          <div className="types-wrapper">
-            <h3>Type:</h3>
-            <ul className="type">
-              {poke.types.map((t, index) => (
-                <li key={t.type.name} className={`pill-${t.type.name}`}>
-                  {t.type.name}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="info-wrapper">
-            <div className="weak-wrapper">
-              <h3>Weak against:</h3>
-              <ul className="weak">
-                {type.damage_relations.double_damage_from.map((weakness, i) => (
-                  <li key={weakness.name} className={`pill-${weakness.name}`}>
-                    {weakness.name}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            {type.damage_relations.double_damage_to.length > 0 ? (
-              <div className="strength-wrapper">
-                <h3>Strong against:</h3>
-                <ul className="strong">
-                  {type.damage_relations.double_damage_to.map((strength, i) => (
-                    <li key={strength.name} className={`pill-${strength.name}`}>
-                      {strength.name}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
-            <div className="special-wrapper">
-              <h3>Special Abilities:</h3>
-              <ul className="abilities">
-                {poke.abilities.map((a, i) => <li key={a.ability.name}>{a.ability.name}</li>)}
-              </ul>
-            </div>
-          </div>
-          <Link to={`/pokedex/pokemon/${poke.id - 1}`} className="btn">
-            &laquo; Previous Pokemon
-          </Link>
-          <Link to={`/pokedex/pokemon/${poke.id + 1}`} className="btn btn-right">
-            Next Pokemon &raquo;
-          </Link>
-        </Wrapper>
-      );
-    } else if (loading && !fetched) {
-      content = (
-        <p className="loading">
-          <Loader />
-          Loading...
-        </p>
-      );
-    } else {
-      content = <div />;
-    }
+            let content;
 
-    return <React.Fragment>{content}</React.Fragment>;
+            const gen =
+              data.pokemons && data.pokemons[0]
+                ? generation.split("_").pop()
+                : "";
+            const pivs =
+              data.pokemons && data.pokemons[0] ? perfectIvs.cp : null;
+            const legacy =
+              data.pokemons && data.pokemons[0] ? legacyMovesTable : null;
+            const evolvements =
+              data.pokemons && data.pokemons[0] ? evolvmentTable.evos : null;
+            const types = [];
+
+            data.pokemons && data.pokemons[0] ? types.push(pokemonType) : null;
+            data.pokemons && data.pokemons[0]
+              ? pokemonSecondaryType != undefined
+                ? types.push(pokemonSecondaryType)
+                : null
+              : null;
+
+            const connectionData =
+              data.pokemonsConnection && data.pokemonsConnection.aggregate;
+
+            const totalPoke = (connectionData && connectionData.count) || 251;
+
+            if (loading) {
+              content = (
+                <Wrapper>
+                  <div className="loading">
+                    <Loader />
+                  </div>
+                </Wrapper>
+              );
+            } else if (error) {
+              content = (
+                <Wrapper>
+                  <div>{error}</div>
+                </Wrapper>
+              );
+            } else {
+              content = (
+                <React.Fragment>
+                  <HeaderControls>
+                    <Link to="/" className="btn">
+                      Back to List
+                    </Link>
+                  </HeaderControls>
+                  <Wrapper>
+                    <DetailHeader
+                      data={{
+                        name,
+                        pokeId,
+                        shinyAvailable,
+                        types,
+                        alolanForm,
+                        eggDistance,
+                        rarity
+                      }}
+                    />
+                    <DetailDescription
+                      data={{ shortDescription, description, gen }}
+                    />
+                    <Stats
+                      data={{
+                        weakness,
+                        strengths,
+                        maxCP,
+                        maxAttack,
+                        maxDefence,
+                        maxStamina
+                      }}
+                    />
+                    <IvTable data={pivs} title="Perfect IVs by lvl" />
+                    <Evolutions data={{ evolvements, pokeId, name }} />
+                    <div>
+                      <ul>
+                        {legacy && legacy.length
+                          ? legacy.map((leg, i) => (
+                              <li key={`legacy-` + i}>{leg}</li>
+                            ))
+                          : null}
+                      </ul>
+
+                      {raidBoss ? <p>Active raid boss</p> : null}
+                      <p>
+                        {evolveCandy
+                          ? "Evolve cost: " + evolveCandy + " Candy"
+                          : null}
+                      </p>
+                      <p>
+                        {buddydistance
+                          ? "Buddy candy distance: " + buddydistance + " km"
+                          : null}
+                      </p>
+                    </div>
+                  </Wrapper>
+                  <Pagination
+                    current={pokeId}
+                    provider={client}
+                    totalPoke={totalPoke}
+                  />
+                </React.Fragment>
+              );
+            }
+
+            return content;
+          }}
+        </Query>
+      </React.Fragment>
+    );
   }
 }
-
-PokemonDetail.propTypes = {
-  id: PropTypes.string,
-};
 
 export default PokemonDetail;

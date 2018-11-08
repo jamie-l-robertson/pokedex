@@ -7,37 +7,64 @@
 html {
   box-sizing: border-box;
   font-size: 16px;
+  height: 100%;
+  background: #c6f2e1;
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Signika', sans-serif;
+  font-family: "Signika", sans-serif;
+  color: #a6b0b6;
 }
 
 html,
 body {
-  width: 100%;
+  width: 100%; /* Old browsers */
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: #4d6472;
+  margin: 0 0 10px;
+}
+
+h2 {
+  font-size: 1.3rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
+h4 {
+  font-size: 1.1rem;
+}
+
+p {
+  margin-top: 0;
+}
+
+label,
+input {
+  color: #a6b0b6;
 }
 
 .loading {
-  position: absolute;
-  left: 50%;
-  top: 50%;
   width: 100px;
   height: 100px;
-  transform: translate(-50%, -50%);
   text-align: center;
+  margin: 100px auto;
+  color: #c0c0c0;
 }
 
 .loading svg {
   animation: pokeball-spin 0.8s infinite;
 }
 
-/* types */
-
-
-[class*='pill-'] {
+[class*="pill-"] {
   display: inline-block;
   padding: 3px 5px;
   border-radius: 3px;
@@ -46,108 +73,16 @@ body {
   text-transform: capitalize;
 }
 
-.pill-normal {
-  color: #0c0c0c;
-  background-color: #eeeeee;
-}
-
-.pill-electric {
-  color: #0c0c0c;
-  background-color: yellow;
-}
-
-.pill-fighting {
-  color: #ffffff;
-  background-color: brown;
-}
-
-.pill-psychic {
-  color: #ffffff;
-  background-color: purple;
-}
-
-.pill-dark {
-  color: #ffffff;
-  background-color: grey;
-}
-
-.pill-ghost {
-  color: #ffffff;
-  background-color: blueviolet;
-}
-
-.pill-grass {
-  color: #ffffff;
-  background-color: green;
-}
-
-.pill-fire {
-  color: #ffffff;
-  background-color: red;
-}
-
-.pill-water {
-  color: #0c0c0c;
-  background-color: aqua;
-}
-
-.pill-steel {
-  color: #0c0c0c;
-  background-color: silver;
-}
-
-.pill-fairy {
-  color: #ffffff;
-  background-color: salmon;
-}
-
-.pill-flying {
-  color: #0c0c0c;
-  background-color: skyblue;
-}
-
-.pill-rock {
-  color: #0c0c0c;
-  background-color: gainsboro;
-}
-
-.pill-bug {
-  color: #0c0c0c;
-  background-color: greenyellow;
-}
-
-.pill-ground {
-  color: #0c0c0c;
-  background-color: burlywood;
-}
-
-.pill-dragon {
-  color: #ffffff;
-  background-color: navy;
-}
-
-.pill-poison {
-  color: #ffffff;
-  background-color: rgb(92, 0, 128);
-}
-
-.pill-ice {
-  color: #0c0c0c;
-  background-color: rgb(137, 236, 253);
-}
-
 .btn {
   display: inline-block;
-  color: #0c0c0c;
-  background-color: #bbbbbb;
-  border-radius: 3px;
+  color: #ffffff;
+  border-radius: 20px;
   margin-right: 10px;
-  padding: 5px 8px;
+  padding: 10px 15px;
   text-decoration: none;
-}
-
-.btn-right {
-  float: right;
+  text-shadow: 1px 0 rgba(0, 0, 0, 0.2);
+  background-color: #145959;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
 }
 
 @keyframes pokeball-spin {
