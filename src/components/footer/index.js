@@ -8,23 +8,22 @@ export const Footer = () => {
         Built by{" "}
         <a
           href="https://www.linkedin.com/in/jamie-robertson-8b75905b/"
-          target="_BLANK"
         >
           Jamie Robertson
         </a>{" "}
         with{" "}
-        <a href="https://reactjs.org" target="_BLANK">
+        <a href="https://reactjs.org">
           React
         </a>{" "}
         and <span>♥</span>.
       </p>
       <p>
         Content managed by{" "}
-        <a href="https://graphcms.com" target="_BLANK">
+        <a href="https://graphcms.com">
           GraqhCMS
         </a>
         , images provided by{" "}
-        <a href="https://github.com/ZeChrales/PogoAssets" target="_BLANK">
+        <a href="https://github.com/ZeChrales/PogoAssets">
           PogoAssets
         </a>
       </p>

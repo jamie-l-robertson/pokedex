@@ -1,7 +1,7 @@
 import React from "react";
 
 export const Sprite = props => {
-  let image, shiny, alolan;
+  let image, shiny;
 
   function pad(n, z) {
     z = z || "0";
@@ -16,7 +16,7 @@ export const Sprite = props => {
 
   image = (
     <img
-      src={`https://raw.githubusercontent.com/ZeChrales/PogoAssets/master/pokemon_icons/pokemon_icon_${pad(
+      src={`/images/sprites/pokemon_icons/pokemon_icon_${pad(
         props.id,
         0
       )}${props.revealShiny ? `_shiny` : ``}.png`}
@@ -24,20 +24,10 @@ export const Sprite = props => {
     />
   );
 
-  alolan = props.alolan ? (
-    <img
-      src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
-        props.alolan
-      }.png`}
-      alt={`${props.alt} - Alolan`}
-    />
-  ) : null;
-
   return (
     <React.Fragment>
       {image}
       {shiny}
-      {alolan}
     </React.Fragment>
   );
 };
