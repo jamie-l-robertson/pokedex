@@ -12,13 +12,13 @@ export const DetailHeaderWrapper = Styled.header`
     display: block;
     max-width: 200px;
     margin: 0 auto 15px;
-    border-radius: 100%;
-    background-color: #EEEEEE;
 
     @media (min-width: 600px) {
       max-width: 140px;
       float: left;
       margin: 0;
+      background-color: rgba(0, 0, 0, 0.01);
+      border: 1px solid rgba(0, 0, 0, 0.04);
     }
   }
 
