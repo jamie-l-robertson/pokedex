@@ -16,7 +16,7 @@ export const Sprite = props => {
 
   image = (
     <img
-      src={`https://raw.githubusercontent.com/ZeChrales/PogoAssets/master/pokemon_icons/pokemon_icon_${pad(
+      src={`https://gitcdn.link/repo/ZeChrales/PogoAssets/master/pokemon_icons/pokemon_icon_${pad(
         props.id,
         0
       )}${props.revealShiny ? `_shiny` : ``}.png`}
