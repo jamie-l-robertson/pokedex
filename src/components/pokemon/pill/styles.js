@@ -36,7 +36,7 @@ export const Item = Styled.li`
   
   &.pill-ghost {
     color: #ffffff;
-    background-color: #E2E2E2;
+    background-color: #9944C3;
   }
   
   &.pill-grass {
