@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 export const Sprite = props => {
   let image, shiny;
@@ -15,13 +15,16 @@ export const Sprite = props => {
   }
 
   image = (
-    <img
-      src={`https://gitcdn.link/repo/ZeChrales/PogoAssets/master/pokemon_icons/pokemon_icon_${pad(
-        props.id,
-        0
-      )}${props.revealShiny ? `_shiny` : ``}.png`}
-      alt={props.revealShiny ? props.alt + " shiny" : props.alt}
-    />
+    <Fragment>
+      <img
+        src={`https://gitcdn.link/repo/ZeChrales/PogoAssets/master/pokemon_icons/pokemon_icon_${pad(
+          props.id,
+          0
+        )}${props.revealShiny ? `_shiny` : ``}.png`}
+        alt={props.revealShiny ? props.alt + " shiny" : props.alt}
+      />
+      <img rel="preload" src={`https://gitcdn.link/repo/ZeChrales/PogoAssets/master/pokemon_icons/pokemon_icon_${pad(props.id, 0)}_shiny.png`} as="image" />
+    </Fragment>
   );
 
   return (
