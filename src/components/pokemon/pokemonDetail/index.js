@@ -15,11 +15,14 @@ import POKEMON_DETAIL_Q from "../../../thread/queries/getPokeDetail";
 
 class PokemonDetail extends Component {
   render() {
+
+    const id = parseInt(this.props.match.params.id, 10);
+
     return (
       <React.Fragment>
         <Query
           query={POKEMON_DETAIL_Q}
-          variables={{ pokeid: this.props.match.params.id }}
+          variables={{ pokeid: id }}
         >
           {({ loading, error, data, client }) => {
             const {
@@ -127,8 +130,8 @@ class PokemonDetail extends Component {
                       <ul>
                         {legacy && legacy.length
                           ? legacy.map((leg, i) => (
-                              <li key={`legacy-` + i}>{leg}</li>
-                            ))
+                            <li key={`legacy-` + i}>{leg}</li>
+                          ))
                           : null}
                       </ul>
 
