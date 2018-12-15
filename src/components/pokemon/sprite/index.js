@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 
 export const Sprite = props => {
-  let image, shiny;
+  let image;
 
   function pad(n, z) {
     z = z || "0";
@@ -23,14 +23,15 @@ export const Sprite = props => {
         )}${props.revealShiny ? `_shiny` : ``}.png`}
         alt={props.revealShiny ? props.alt + " shiny" : props.alt}
       />
-      <img rel="preload" src={`https://gitcdn.link/repo/ZeChrales/PogoAssets/master/pokemon_icons/pokemon_icon_${pad(props.id, 0)}_shiny.png`} as="image" />
+      {props.preloadSpriteVariants
+        && <link rel="preload" href={`https://gitcdn.link/repo/ZeChrales/PogoAssets/master/pokemon_icons/pokemon_icon_${pad(props.id, 0)}_shiny.png`} as="image" />
+      }
     </Fragment>
   );
 
   return (
     <React.Fragment>
       {image}
-      {shiny}
     </React.Fragment>
   );
 };

@@ -37,6 +37,7 @@ class DetailHeader extends Component {
             id={pokeId}
             alt="Normal variant"
             revealShiny={this.state.revealShiny}
+            preloadSpriteVariants={shinyAvailable}
           />
           <div className="content">
             <h1>
