@@ -1,5 +1,7 @@
 import React, { Fragment } from "react";
 
+const batch_key = 'v1546788910';
+
 export const Sprite = props => {
   let image;
 
@@ -17,14 +19,14 @@ export const Sprite = props => {
   image = (
     <Fragment>
       <img
-        src={`https://gitcdn.link/repo/ZeChrales/PogoAssets/master/pokemon_icons/pokemon_icon_${pad(
+        src={`https://res.cloudinary.com/ru7hl355/image/upload/f_auto/${batch_key}/pokemon/pokemon_icon_${pad(
           props.id,
           0
         )}${props.revealShiny ? `_shiny` : ``}.png`}
         alt={props.revealShiny ? props.alt + " shiny" : props.alt}
       />
       {props.preloadSpriteVariants
-        && <link rel="preload" href={`https://gitcdn.link/repo/ZeChrales/PogoAssets/master/pokemon_icons/pokemon_icon_${pad(props.id, 0)}_shiny.png`} as="image" />
+        && <link rel="preload" href={`https://res.cloudinary.com/ru7hl355/image/upload/f_auto/${batch_key}/pokemon/pokemon_icon_${pad(props.id, 0)}_shiny.png`} as="image" />
       }
     </Fragment>
   );
