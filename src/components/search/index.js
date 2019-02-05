@@ -10,6 +10,7 @@ export const Search = props => {
           type="text"
           value={props.filter}
           onChange={props.handleInputChange}
+          id="search-input"
         />
         <button onClick={props.handleInputClear}>Clear</button>
       </form>
