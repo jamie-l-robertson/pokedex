@@ -15,7 +15,7 @@ export const Evolutions = props => {
             {evolvements && evolvements.length
               ? evolvements.map((evolvement, i) => (
                   <li key={`evolvement-` + i}>
-                    <Link to={`/pokemon/${evolvement.id}`} id={pokeId}>
+                    <Link to={`/pokemon?id=${evolvement.id}`} id={pokeId}>
                       <Sprite id={evolvement.id} />
                       {evolvement.name}
                     </Link>
