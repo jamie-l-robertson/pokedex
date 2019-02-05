@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 
-const batch_key = 'v1546788910';
+const batch_key = "v1546788910";
 
 export const Sprite = props => {
   let image;
@@ -25,15 +25,18 @@ export const Sprite = props => {
         )}${props.revealShiny ? `_shiny` : ``}.png`}
         alt={props.revealShiny ? props.alt + " shiny" : props.alt}
       />
-      {props.preloadSpriteVariants
-        && <link rel="preload" href={`https://res.cloudinary.com/ru7hl355/image/upload/f_auto/${batch_key}/pokemon/pokemon_icon_${pad(props.id, 0)}_shiny.png`} as="image" />
-      }
+      {props.preloadSpriteVariants && (
+        <link
+          rel="preload"
+          href={`https://res.cloudinary.com/ru7hl355/image/upload/f_auto/${batch_key}/pokemon/pokemon_icon_${pad(
+            props.id,
+            0
+          )}_shiny.png`}
+          as="image"
+        />
+      )}
     </Fragment>
   );
 
-  return (
-    <React.Fragment>
-      {image}
-    </React.Fragment>
-  );
+  return <React.Fragment>{image}</React.Fragment>;
 };

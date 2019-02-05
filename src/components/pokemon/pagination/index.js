@@ -11,13 +11,13 @@ class Pagination extends Component {
       <PaginationWrapper>
         {current - 1 !== 0 ? (
           <Link
-            to={`/pokemon/${current - 1}`}
+            to={`/pokemon?id=${current - 1}`}
             className="btn btn--previous"
             aria-label="Previous Pokemon"
             onMouseOver={() =>
               provider.query({
                 query: POKEMON_DETAIL_Q,
-                variables: { pokeid: (current - 1).toString() }
+                variables: { pokeid: current - 1 }
               })
             }
           >
@@ -26,13 +26,13 @@ class Pagination extends Component {
         ) : null}
         {current + 1 <= totalPoke ? (
           <Link
-            to={`/pokemon/${current + 1}`}
+            to={`/pokemon?id=${current + 1}`}
             className="btn btn--next"
             aria-label="Next Pokemon"
             onMouseOver={() =>
               provider.query({
                 query: POKEMON_DETAIL_Q,
-                variables: { pokeid: (current + 1).toString() }
+                variables: { pokeid: current + 1 }
               })
             }
           >
