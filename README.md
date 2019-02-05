@@ -1,5 +1,7 @@
 ## React Pokedex
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/10196c94-1a5b-480c-b8bc-7debbe0b7c2f/deploy-status)](https://app.netlify.com/sites/pokehelper/deploys)
+
 React app that uses the [Pokéapi](https://pokeapi.co/) to create an interactive Pokedex.
 
 ### Requirements
