@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Query } from "react-apollo";
-import qs from "query-string";
 import Loader from "../../loader";
 import Pagination from "../pagination";
 import { Link } from "react-router-dom";
@@ -16,8 +15,8 @@ import POKEMON_DETAIL_Q from "../../../thread/queries/getPokeDetail";
 
 class PokemonDetail extends Component {
   render() {
-    const query = qs.parse(this.props.location.search);
-    const id = parseInt(query.id, 10);
+    const query = this.props.location.search.split("=").pop();
+    const id = parseInt(query, 10);
 
     return (
       <React.Fragment>
