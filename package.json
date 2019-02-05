@@ -1,6 +1,6 @@
 {
   "name": "pokehelper",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "private": true,
   "homepage": "http://pokehelper.netlify.com",
   "author": "Jamie Robertson",
@@ -13,6 +13,7 @@
     "apollo-boost": "^0.1.12",
     "gh-pages": "^1.1.0",
     "graphql": "^0.13.2",
+    "query-string": "^6.2.0",
     "react": "^16.3.2",
     "react-addons-css-transition-group": "^15.6.2",
     "react-apollo": "^2.1.9",

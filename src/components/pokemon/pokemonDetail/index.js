@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Query } from "react-apollo";
+import { parse } from "query-string";
 import Loader from "../../loader";
 import Pagination from "../pagination";
 import { Link } from "react-router-dom";
@@ -15,15 +16,12 @@ import POKEMON_DETAIL_Q from "../../../thread/queries/getPokeDetail";
 
 class PokemonDetail extends Component {
   render() {
-
-    const id = parseInt(this.props.match.params.id, 10);
+    const query = parse(this.props.location.search);
+    const id = parseInt(query.id, 10);
 
     return (
       <React.Fragment>
-        <Query
-          query={POKEMON_DETAIL_Q}
-          variables={{ pokeid: id }}
-        >
+        <Query query={POKEMON_DETAIL_Q} variables={{ pokeid: id }}>
           {({ loading, error, data, client }) => {
             const {
               pokeId,
@@ -130,8 +128,8 @@ class PokemonDetail extends Component {
                       <ul>
                         {legacy && legacy.length
                           ? legacy.map((leg, i) => (
-                            <li key={`legacy-` + i}>{leg}</li>
-                          ))
+                              <li key={`legacy-` + i}>{leg}</li>
+                            ))
                           : null}
                       </ul>
 

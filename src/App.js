@@ -17,7 +17,7 @@ class App extends Component {
                 path={process.env.PUBLIC_URL + "/"}
                 component={PokemonList}
               />
-              <Route exact path="/pokemon/:id" component={PokemonDetail} />
+              <Route name="pokemon" path="/pokemon" component={PokemonDetail} />
               <Route path="*" component={NotFound} />
             </Switch>
             <Footer />

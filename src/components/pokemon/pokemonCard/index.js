@@ -10,7 +10,7 @@ class Pokemon extends PureComponent {
 
     return (
       <Card>
-        <Link to={`/pokemon/${pokemon.pokeId}`} id={pokemon.pokeId}>
+        <Link to={`/pokemon?id=${pokemon.pokeId}`} id={pokemon.pokeId}>
           <Sprite id={pokemon.pokeId} alt={pokemon.name} />
           <h2>
             {pokemon.name} <span>#{pokemon.pokeId}</span>
