@@ -5,6 +5,7 @@ import { ApolloProvider } from "react-apollo";
 import ApolloClient from "apollo-boost";
 import { toIdValue } from "apollo-utilities";
 import { InMemoryCache } from "apollo-cache-inmemory";
+import * as serviceWorker from "./serviceWorker";
 import "./index.css";
 import App from "./App";
 
@@ -37,3 +38,5 @@ ReactDOM.render(
   </BrowserRouter>,
   document.getElementById("root")
 );
+
+serviceWorker.register();
