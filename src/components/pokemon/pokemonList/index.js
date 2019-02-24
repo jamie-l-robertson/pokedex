@@ -8,6 +8,7 @@ import { List } from "./styles";
 // Queries
 import POKEMON_LIST_Q from "../../../thread/queries/getPokeList";
 
+//@TODO: Refactor to use hooks
 class PokemonList extends Component {
   state = {
     fetched: false,
