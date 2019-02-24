@@ -1,24 +1,35 @@
-import React, { PureComponent } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Sprite } from "../sprite";
-import { Card } from "./styles";
+import { Card, StyledIcon } from "./styles";
 
-class Pokemon extends PureComponent {
-  render() {
-    const { pokemon } = this.props;
-
-    return (
-      <Card>
-        <Link to={`/pokemon?id=${pokemon.pokeId}`} id={pokemon.pokeId}>
-          <Sprite id={pokemon.pokeId} alt={pokemon.name} />
-          <h2>
-            {pokemon.name} <span>#{pokemon.pokeId}</span>
-          </h2>
-        </Link>
-      </Card>
-    );
-  }
+const Pokemon = ({ pokemon }) => {
+  return (
+    <Card>
+      <Link to={`/pokemon?id=${pokemon.pokeId}`} id={pokemon.pokeId}>
+        <Sprite id={pokemon.pokeId} alt={pokemon.name} />
+        <h2>
+          {pokemon.name} <span>#{pokemon.pokeId}</span>
+        </h2>
+        {pokemon.shinyAvailable ? (
+          <StyledIcon
+            className="shiny-icon"
+            role="img"
+            title="Shiny available"
+            aria-label="Shiny available"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+              <path
+                fill="#F4DF19"
+                d="M24.5 0l7.1 16.4 16.2 7.5-16.3 7.4-7 16.5-7.4-16.5-16-7.4 16.1-7.6zM42.2 52.2l7.2 16.4 16.2 7.5-16.3 7.4-7.1 16.5-7.3-16.5-16-7.4 16-7.6zM74.5 16.7l7.1 16.4 16.2 7.5L81.5 48l-7 16.4L67.1 48l-16-7.4L67.2 33z"
+              />
+            </svg>
+          </StyledIcon>
+        ) : null}
+      </Link>
+    </Card>
+  );
 }
 
 Pokemon.propTypes = {

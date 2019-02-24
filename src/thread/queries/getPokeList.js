@@ -9,6 +9,7 @@ const POKEMON_LIST_Q = gql`
         pokemonType
         pokemonSecondaryType
         status
+        shinyAvailable
       }
     }
   }

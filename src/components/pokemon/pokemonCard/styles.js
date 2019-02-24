@@ -50,3 +50,16 @@ export const Card = Styled.article`
     text-decoration: none;
   }
 `;
+
+export const StyledIcon = Styled.span`
+  display: block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  padding: 3px;
+  border-radius: 40px;
+  background-color: rgba(255,255,255,0.7);
+`;
