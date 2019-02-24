@@ -25,7 +25,7 @@ class PokemonList extends Component {
 
   handleInputChange(evt) {
     this.setState({
-      filter: evt.target.value
+      filter: evt.target.value === 'shiny' ? 'shiny' : evt.target.value
     });
   }
 
@@ -45,6 +45,9 @@ class PokemonList extends Component {
   }
 
   render() {
+    let searchVars = {};
+    this.state.filter === 'shiny' ? searchVars.shiny = true : searchVars.name = this.state.filter;
+
     return (
       <React.Fragment>
         <Search
@@ -53,7 +56,7 @@ class PokemonList extends Component {
           handleInputClear={this.handleInputClear}
         />
         <List>
-          <Query query={POKEMON_LIST_Q} variables={{ name: this.state.filter }}>
+          <Query query={POKEMON_LIST_Q} variables={searchVars}>
             {({ loading, error, data }) => {
               return (
                 <React.Fragment>
