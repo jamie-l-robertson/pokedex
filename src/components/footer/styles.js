@@ -17,6 +17,7 @@ export const StyledFooter = styled.footer`
   p {
     margin-bottom: 5px;
     font-size: 14px;
+    color: #636363;
     text-align: center;
 
     &:last-of-type {
@@ -29,7 +30,7 @@ export const StyledFooter = styled.footer`
   }
 
   a {
-    color: #2883c2;
+    color: #2774af;
     text-decoration: none;
 
     &:hover,
