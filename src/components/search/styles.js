@@ -12,6 +12,7 @@ export const Searchbox = Styled.div`
   border-bottom: 1px solid #EEEEEE;
 
   label {
+    color: #636363;
     margin-right: 5px;
   }
 
@@ -22,6 +23,7 @@ export const Searchbox = Styled.div`
     width: 120px;
     border-radius: 20px 0 0 20px;
     height: 34px;
+    color: #636363;
     vertical-align: top;
     -webkit-appearance: none;
   }
