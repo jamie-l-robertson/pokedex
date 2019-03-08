@@ -25,7 +25,7 @@ export const StyledFooter = styled.footer`
     }
 
     span {
-      color: #e91e63;
+      color: #e4004d;
     }
   }
 
