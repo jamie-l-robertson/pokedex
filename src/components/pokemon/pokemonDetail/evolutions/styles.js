@@ -1,4 +1,4 @@
-import Styled from 'styled-components';
+import Styled from "styled-components";
 
 export const EvolveWrapper = Styled.div`
   display: block;
@@ -53,6 +53,7 @@ export const EvolveWrapper = Styled.div`
       z-index: 3;
       display: block;
       width: 46px;
+      height: auto;
       margin: 0 auto;
       border-radius: 100%;
       background-color: #EEEEEE;
