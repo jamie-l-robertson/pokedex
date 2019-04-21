@@ -10,10 +10,13 @@ export const DetailHeaderWrapper = Styled.header`
 
   > img {
     display: block;
+    width: 200px;
+    height: auto;
     max-width: 200px;
     margin: 0 auto 15px;
 
     @media (min-width: 600px) {
+      width: 140px;
       max-width: 140px;
       float: left;
       margin: 0;
