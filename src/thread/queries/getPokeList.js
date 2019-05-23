@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 const POKEMON_LIST_Q = gql`
   query PokemonList($name: String, $shiny: Boolean) {
