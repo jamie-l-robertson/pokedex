@@ -54,12 +54,13 @@ function PokemonDetail({ location }) {
           const evolvements = data.pokemons && data.pokemons[0] ? evolvmentTable.evos : null;
           const types = [];
 
-          data.pokemons && data.pokemons[0] ? types.push(pokemonType) : null;
-          data.pokemons && data.pokemons[0]
-            ? pokemonSecondaryType != undefined
-              ? types.push(pokemonSecondaryType)
-              : null
-            : null;
+          if (data.pokemons && data.pokemons[0]) {
+            types.push(pokemonType);
+          }
+
+          if (data.pokemons && data.pokemons[0] && pokemonSecondaryType !== undefined) {
+            types.push(pokemonSecondaryType);
+          }
 
           const connectionData = data.pokemonsConnection && data.pokemonsConnection.aggregate;
 

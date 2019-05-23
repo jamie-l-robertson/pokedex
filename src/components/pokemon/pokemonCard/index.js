@@ -17,7 +17,7 @@ const Pokemon = ({ pokemon }) => {
   return (
     <Card style={springs}>
       <Link to={`/pokemon?id=${pokemon.pokeId}`} id={pokemon.pokeId}>
-        <LazyLoad key={pokemon.pokeId} width="130" height={130} width={130} offset={100}>
+        <LazyLoad key={pokemon.pokeId} width="130" height={130} offset={100}>
           <Sprite id={pokemon.pokeId} alt={pokemon.name} />
         </LazyLoad>
         <h2>
