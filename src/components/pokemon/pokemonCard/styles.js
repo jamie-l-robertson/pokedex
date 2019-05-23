@@ -1,6 +1,7 @@
-import Styled from "styled-components";
+import Styled from 'styled-components';
+import { animated } from 'react-spring';
 
-export const Card = Styled.article`
+export const Card = Styled(animated.article)`
   display: inline-block;
   position: relative;
   margin: 10px;
@@ -19,12 +20,16 @@ export const Card = Styled.article`
     outline: 3px solid #145959;
 
     img {
-      transform: scale(1.2); 
+      display: block;
+      width: 130px;
+      transition: 0.15s ease-in-out;
+      transform: scale(1.1); 
     }
   }
 
   img {
     position: relative;
+    display: block;
     z-index: 2;
     max-width: 130px;
   }

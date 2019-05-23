@@ -1,20 +1,20 @@
-import React from "react";
-import { Query } from "react-apollo";
-import Loader from "../../loader";
-import Pagination from "../pagination";
-import { Link } from "react-router-dom";
-import DetailHeader from "./detailHeader";
-import { DetailDescription } from "./detailDescription";
-import { Stats } from "./stats";
-import { IvTable } from "./ivTable";
-import { Evolutions } from "./evolutions";
-import { Wrapper, HeaderControls } from "./styles";
+import React from 'react';
+import { Query } from 'react-apollo';
+import Loader from '../../loader';
+import Pagination from '../pagination';
+import { Link } from 'react-router-dom';
+import DetailHeader from './detailHeader';
+import { DetailDescription } from './detailDescription';
+import { Stats } from './stats';
+import { IvTable } from './ivTable';
+import { Evolutions } from './evolutions';
+import { Wrapper, HeaderControls } from './styles';
 
 // QUERIES
-import POKEMON_DETAIL_Q from "../../../thread/queries/getPokeDetail";
+import POKEMON_DETAIL_Q from '../../../thread/queries/getPokeDetail';
 
 function PokemonDetail({ location }) {
-  const id = parseInt(location.search.split("=").pop(), 10);
+  const id = parseInt(location.search.split('=').pop(), 10);
 
   return (
     <React.Fragment>
@@ -43,21 +43,15 @@ function PokemonDetail({ location }) {
             pokemonType,
             pokemonSecondaryType,
             strengths,
-            weakness
+            weakness,
           } = data.pokemons && data.pokemons[0] ? data.pokemons[0] : {};
 
           let content;
 
-          const gen =
-            data.pokemons && data.pokemons[0]
-              ? generation.split("_").pop()
-              : "";
-          const pivs =
-            data.pokemons && data.pokemons[0] ? perfectIvs.cp : null;
-          const legacy =
-            data.pokemons && data.pokemons[0] ? legacyMovesTable : null;
-          const evolvements =
-            data.pokemons && data.pokemons[0] ? evolvmentTable.evos : null;
+          const gen = data.pokemons && data.pokemons[0] ? generation.split('_').pop() : '';
+          const pivs = data.pokemons && data.pokemons[0] ? perfectIvs.cp : null;
+          const legacy = data.pokemons && data.pokemons[0] ? legacyMovesTable : null;
+          const evolvements = data.pokemons && data.pokemons[0] ? evolvmentTable.evos : null;
           const types = [];
 
           data.pokemons && data.pokemons[0] ? types.push(pokemonType) : null;
@@ -67,8 +61,7 @@ function PokemonDetail({ location }) {
               : null
             : null;
 
-          const connectionData =
-            data.pokemonsConnection && data.pokemonsConnection.aggregate;
+          const connectionData = data.pokemonsConnection && data.pokemonsConnection.aggregate;
 
           const totalPoke = (connectionData && connectionData.count) || 251;
 
@@ -103,12 +96,10 @@ function PokemonDetail({ location }) {
                       types,
                       alolanForm,
                       eggDistance,
-                      rarity
+                      rarity,
                     }}
                   />
-                  <DetailDescription
-                    data={{ shortDescription, description, gen }}
-                  />
+                  <DetailDescription data={{ shortDescription, description, gen }} />
                   <Stats
                     data={{
                       weakness,
@@ -116,38 +107,22 @@ function PokemonDetail({ location }) {
                       maxCP,
                       maxAttack,
                       maxDefence,
-                      maxStamina
+                      maxStamina,
                     }}
                   />
                   <IvTable data={pivs} title="Perfect IVs by lvl" />
                   <Evolutions data={{ evolvements, pokeId, name }} />
                   <div>
                     <ul>
-                      {legacy && legacy.length
-                        ? legacy.map((leg, i) => (
-                          <li key={`legacy-` + i}>{leg}</li>
-                        ))
-                        : null}
+                      {legacy && legacy.length ? legacy.map((leg, i) => <li key={`legacy-` + i}>{leg}</li>) : null}
                     </ul>
 
                     {raidBoss ? <p>Active raid boss</p> : null}
-                    <p>
-                      {evolveCandy
-                        ? "Evolve cost: " + evolveCandy + " Candy"
-                        : null}
-                    </p>
-                    <p>
-                      {buddydistance
-                        ? "Buddy candy distance: " + buddydistance + " km"
-                        : null}
-                    </p>
+                    <p>{evolveCandy ? 'Evolve cost: ' + evolveCandy + ' Candy' : null}</p>
+                    <p>{buddydistance ? 'Buddy candy distance: ' + buddydistance + ' km' : null}</p>
                   </div>
                 </Wrapper>
-                <Pagination
-                  current={pokeId}
-                  provider={client}
-                  totalPoke={totalPoke}
-                />
+                <Pagination current={pokeId} provider={client} totalPoke={totalPoke} />
               </React.Fragment>
             );
           }
