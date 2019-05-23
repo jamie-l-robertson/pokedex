@@ -6,8 +6,6 @@ const POKEMON_LIST_Q = gql`
       ... on Pokemon {
         name
         pokeId
-        pokemonType
-        pokemonSecondaryType
         status
         shinyAvailable
       }

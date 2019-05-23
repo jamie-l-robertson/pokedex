@@ -24,6 +24,8 @@ export const Sprite = props => {
           0
         )}${props.revealShiny ? `_shiny` : ``}.png`}
         alt={props.revealShiny ? props.alt + " shiny" : props.alt}
+        width="130"
+        height="130"
       />
       {props.preloadSpriteVariants && (
         <link
