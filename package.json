@@ -32,8 +32,7 @@
   },
   "husky": {
     "hooks": {
-      "post-checkout": "yarn",
-      "pre-push": "yarn test"
+      "post-checkout": "yarn"
     }
   }
 }
