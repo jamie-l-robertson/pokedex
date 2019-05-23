@@ -29,10 +29,5 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
-  },
-  "husky": {
-    "hooks": {
-      "post-checkout": "if [[ $HUSKY_GIT_PARAMS =~ 1$]]; then yarn --frozen-lockfile; fi"
-    }
   }
 }
