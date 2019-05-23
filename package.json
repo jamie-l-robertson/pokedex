@@ -32,7 +32,7 @@
   },
   "husky": {
     "hooks": {
-      "post-checkout": "yarn"
+      "post-checkout": "if [[ $HUSKY_GIT_PARAMS =~ 1$]]; then yarn --frozen-lockfile; fi"
     }
   }
 }
