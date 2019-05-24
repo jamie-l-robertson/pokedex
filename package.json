@@ -6,7 +6,7 @@
   "author": "Jamie Robertson",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ru7hl355/pokedex.git"
+    "url": "https://github.com/jamie-l-robertson/pokedex.git"
   },
   "dependencies": {
     "apollo": "^2.8.0",
