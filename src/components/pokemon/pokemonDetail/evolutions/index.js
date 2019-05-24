@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { Sprite } from "../../sprite";
-import { EvolveWrapper } from "./styles";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Sprite } from '../../sprite';
+import { EvolveWrapper } from './styles';
 
 export const Evolutions = props => {
   const { evolvements, pokeId } = props.data;
@@ -16,7 +16,7 @@ export const Evolutions = props => {
               ? evolvements.map((evolvement, i) => (
                   <li key={`evolvement-` + i}>
                     <Link to={`/pokemon?id=${evolvement.id}`} id={pokeId}>
-                      <Sprite id={evolvement.id} />
+                      <Sprite id={`${evolvement.id}`} />
                       {evolvement.name}
                     </Link>
                   </li>

@@ -89,39 +89,41 @@ function PokemonDetail({ location }) {
                   </Link>
                 </HeaderControls>
                 <Wrapper>
-                  <DetailHeader
-                    data={{
-                      name,
-                      pokeId,
-                      shinyAvailable,
-                      types,
-                      alolanForm,
-                      eggDistance,
-                      rarity,
-                    }}
-                  />
-                  <DetailDescription data={{ shortDescription, description, gen }} />
-                  <Stats
-                    data={{
-                      weakness,
-                      strengths,
-                      maxCP,
-                      maxAttack,
-                      maxDefence,
-                      maxStamina,
-                    }}
-                  />
-                  <IvTable data={pivs} title="Perfect IVs by lvl" />
-                  <Evolutions data={{ evolvements, pokeId, name }} />
-                  <div>
-                    <ul>
-                      {legacy && legacy.length ? legacy.map((leg, i) => <li key={`legacy-` + i}>{leg}</li>) : null}
-                    </ul>
+                  <main>
+                    <DetailHeader
+                      data={{
+                        name,
+                        pokeId,
+                        shinyAvailable,
+                        types,
+                        alolanForm,
+                        eggDistance,
+                        rarity,
+                      }}
+                    />
+                    <DetailDescription data={{ shortDescription, description, gen }} />
+                    <Stats
+                      data={{
+                        weakness,
+                        strengths,
+                        maxCP,
+                        maxAttack,
+                        maxDefence,
+                        maxStamina,
+                      }}
+                    />
+                    <IvTable data={pivs} title="Perfect IVs by lvl" />
+                    <Evolutions data={{ evolvements, pokeId, name }} />
+                    <div>
+                      <ul>
+                        {legacy && legacy.length ? legacy.map((leg, i) => <li key={`legacy-` + i}>{leg}</li>) : null}
+                      </ul>
 
-                    {raidBoss ? <p>Active raid boss</p> : null}
-                    <p>{evolveCandy ? 'Evolve cost: ' + evolveCandy + ' Candy' : null}</p>
-                    <p>{buddydistance ? 'Buddy candy distance: ' + buddydistance + ' km' : null}</p>
-                  </div>
+                      {raidBoss ? <p>Active raid boss</p> : null}
+                      <p>{evolveCandy ? 'Evolve cost: ' + evolveCandy + ' Candy' : null}</p>
+                      <p>{buddydistance ? 'Buddy candy distance: ' + buddydistance + ' km' : null}</p>
+                    </div>
+                  </main>
                 </Wrapper>
                 <Pagination current={pokeId} provider={client} totalPoke={totalPoke} />
               </React.Fragment>

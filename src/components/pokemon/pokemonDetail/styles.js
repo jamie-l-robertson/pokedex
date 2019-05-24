@@ -1,6 +1,6 @@
-import Styled from "styled-components";
+import Styled from 'styled-components';
 
-export const HeaderControls = Styled.div`
+export const HeaderControls = Styled.header`
 display: block;
   max-width: 90%;
   margin: 20px auto;

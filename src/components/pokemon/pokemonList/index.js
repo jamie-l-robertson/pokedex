@@ -63,26 +63,30 @@ class PokemonList extends Component {
           handleInputChange={this.handleInputChange}
           handleInputClear={this.handleInputClear}
         />
-        <List>
-          <Query query={POKEMON_LIST_Q} variables={searchVars}>
-            {({ loading, error, data }) => {
-              return (
-                <React.Fragment>
-                  {error ? <div>{error}</div> : null}
-                  {loading ? (
-                    <div className="loading">
-                      <Loader />
-                    </div>
-                  ) : null}
-                  {data.pokemons &&
-                    data.pokemons.map(poke =>
-                      poke.status === 'PUBLISHED' ? <Pokemon key={`poke-list-${poke.pokeId}`} pokemon={poke} /> : null,
-                    )}
-                </React.Fragment>
-              );
-            }}
-          </Query>
-        </List>
+        <main>
+          <List>
+            <Query query={POKEMON_LIST_Q} variables={searchVars}>
+              {({ loading, error, data }) => {
+                return (
+                  <React.Fragment>
+                    {error ? <div>{error}</div> : null}
+                    {loading ? (
+                      <div className="loading">
+                        <Loader />
+                      </div>
+                    ) : null}
+                    {data.pokemons &&
+                      data.pokemons.map(poke =>
+                        poke.status === 'PUBLISHED' ? (
+                          <Pokemon key={`poke-list-${poke.pokeId}`} pokemon={poke} />
+                        ) : null,
+                      )}
+                  </React.Fragment>
+                );
+              }}
+            </Query>
+          </List>
+        </main>
       </React.Fragment>
     );
   }
