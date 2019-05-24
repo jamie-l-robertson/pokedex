@@ -1,13 +1,13 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
-import { ApolloProvider } from "react-apollo";
-import ApolloClient from "apollo-boost";
-import { toIdValue } from "apollo-utilities";
-import { InMemoryCache } from "apollo-cache-inmemory";
-import * as serviceWorker from "./serviceWorker";
-import "./index.css";
-import App from "./App";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+import { ApolloProvider } from 'react-apollo';
+import ApolloClient from 'apollo-boost';
+import { toIdValue } from 'apollo-utilities';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import * as serviceWorker from './serviceWorker';
+import './index.css';
+import App from './App';
 
 const cache = new InMemoryCache({
   cacheRedirects: {
@@ -16,18 +16,18 @@ const cache = new InMemoryCache({
         const id = args.where.pokeId_in;
         toIdValue(
           cache.config.dataIdFromObject({
-            __typename: "Pokemon",
-            pokeId_in: id
-          })
+            __typename: 'Pokemon',
+            pokeId_in: id,
+          }),
         );
-      }
-    }
-  }
+      },
+    },
+  },
 });
 
 const client = new ApolloClient({
   uri: process.env.REACT_APP_GRAPHQL_ENDPOINT,
-  cache
+  cache,
 });
 
 ReactDOM.render(
@@ -36,7 +36,7 @@ ReactDOM.render(
       <App />
     </ApolloProvider>
   </BrowserRouter>,
-  document.getElementById("root")
+  document.getElementById('root'),
 );
 
 serviceWorker.register();

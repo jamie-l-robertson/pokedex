@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Pill /> Pill renders 1`] = `
+<styled.li
+  className="pill-grass"
+>
+  <li
+    className="pill-grass sc-bdVaJa kdfYYr"
+  >
+    Grass
+  </li>
+</styled.li>
+`;

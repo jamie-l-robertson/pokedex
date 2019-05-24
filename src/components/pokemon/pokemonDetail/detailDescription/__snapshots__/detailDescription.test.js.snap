@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DetailDescription /> Detail Description renders 1`] = `
+<styled.div>
+  <div
+    className="sc-bdVaJa fPpNxz"
+  >
+    <h2>
+      I am short description
+    </h2>
+    <p>
+      I am a long description
+    </p>
+    <p>
+      Origin: 
+      <span
+        className="region"
+      >
+        Kanto
+      </span>
+    </p>
+  </div>
+</styled.div>
+`;
