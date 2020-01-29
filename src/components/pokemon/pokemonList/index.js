@@ -67,6 +67,8 @@ class PokemonList extends Component {
           <List>
             <Query query={POKEMON_LIST_Q} variables={searchVars}>
               {({ loading, error, data }) => {
+
+
                 return (
                   <React.Fragment>
                     {error ? <div>{error}</div> : null}
@@ -75,7 +77,7 @@ class PokemonList extends Component {
                         <Loader />
                       </div>
                     ) : null}
-                    {data.pokemons &&
+                    {data?.pokemons &&
                       data.pokemons.map(poke =>
                         poke.status === 'PUBLISHED' ? (
                           <Pokemon key={`poke-list-${poke.pokeId}`} pokemon={poke} />

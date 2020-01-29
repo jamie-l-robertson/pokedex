@@ -20,51 +20,7 @@ function PokemonDetail({ location }) {
     <React.Fragment>
       <Query query={POKEMON_DETAIL_Q} variables={{ pokeid: id }}>
         {({ loading, error, data, client }) => {
-          const {
-            pokeId,
-            name,
-            rarity,
-            maxCP,
-            maxAttack,
-            maxDefence,
-            maxStamina,
-            alolanForm,
-            shinyAvailable,
-            raidBoss,
-            perfectIvs,
-            eggDistance,
-            legacyMovesTable,
-            buddydistance,
-            evolveCandy,
-            evolvmentTable,
-            description,
-            shortDescription,
-            generation,
-            pokemonType,
-            pokemonSecondaryType,
-            strengths,
-            weakness,
-          } = data.pokemons && data.pokemons[0] ? data.pokemons[0] : {};
-
           let content;
-
-          const gen = data.pokemons && data.pokemons[0] ? generation.split('_').pop() : '';
-          const pivs = data.pokemons && data.pokemons[0] ? perfectIvs.cp : null;
-          const legacy = data.pokemons && data.pokemons[0] ? legacyMovesTable : null;
-          const evolvements = data.pokemons && data.pokemons[0] ? evolvmentTable.evos : null;
-          const types = [];
-
-          if (data.pokemons && data.pokemons[0]) {
-            types.push(pokemonType);
-          }
-
-          if (data.pokemons && data.pokemons[0] && pokemonSecondaryType !== undefined) {
-            types.push(pokemonSecondaryType);
-          }
-
-          const connectionData = data.pokemonsConnection && data.pokemonsConnection.aggregate;
-
-          const totalPoke = (connectionData && connectionData.count) || 251;
 
           if (loading) {
             content = (
@@ -81,6 +37,52 @@ function PokemonDetail({ location }) {
               </Wrapper>
             );
           } else {
+
+            const {
+              pokeId,
+              name,
+              rarity,
+              maxCP,
+              maxAttack,
+              maxDefence,
+              maxStamina,
+              alolanForm,
+              shinyAvailable,
+              raidBoss,
+              perfectIvs,
+              eggDistance,
+              legacyMovesTable,
+              buddydistance,
+              evolveCandy,
+              evolvmentTable,
+              description,
+              shortDescription,
+              generation,
+              pokemonType,
+              pokemonSecondaryType,
+              strengths,
+              weakness,
+            } = data?.pokemons[0] || {};
+
+
+            const gen = data?.pokemons[0] ? generation.split('_').pop() : '';
+            const pivs = data?.pokemons[0] ? perfectIvs.cp : null;
+            const legacy = data?.pokemons[0] ? legacyMovesTable : null;
+            const evolvements = data?.pokemons[0] ? evolvmentTable.evos : null;
+            const types = [];
+
+            if (data?.pokemons[0]) {
+              types.push(pokemonType);
+            }
+
+            if (data?.pokemons[0] && pokemonSecondaryType !== undefined) {
+              types.push(pokemonSecondaryType);
+            }
+
+            const connectionData = data.pokemonsConnection && data.pokemonsConnection.aggregate;
+
+            const totalPoke = (connectionData && connectionData.count) || 251;
+
             content = (
               <React.Fragment>
                 <HeaderControls>
