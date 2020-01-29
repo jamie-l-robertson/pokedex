@@ -62,20 +62,20 @@ function PokemonDetail({ location }) {
               pokemonSecondaryType,
               strengths,
               weakness,
-            } = data?.pokemons[0] || {};
+            } = data && data.pokemons && data.pokemons[0] ? data.pokemons[0] : {};
 
 
-            const gen = data?.pokemons[0] ? generation.split('_').pop() : '';
-            const pivs = data?.pokemons[0] ? perfectIvs.cp : null;
-            const legacy = data?.pokemons[0] ? legacyMovesTable : null;
-            const evolvements = data?.pokemons[0] ? evolvmentTable.evos : null;
+            const gen = data.pokemons && data.pokemons[0] ? generation.split('_').pop() : '';
+            const pivs = data.pokemons && data.pokemons[0] ? perfectIvs.cp : null;
+            const legacy = data.pokemons && data.pokemons[0] ? legacyMovesTable : null;
+            const evolvements = data.pokemons && data.pokemons[0] ? evolvmentTable.evos : null;
             const types = [];
 
-            if (data?.pokemons[0]) {
+            if (data.pokemons && data.pokemons[0]) {
               types.push(pokemonType);
             }
 
-            if (data?.pokemons[0] && pokemonSecondaryType !== undefined) {
+            if (data.pokemons && data.pokemons[0] && pokemonSecondaryType !== undefined) {
               types.push(pokemonSecondaryType);
             }
 

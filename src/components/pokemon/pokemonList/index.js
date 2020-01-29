@@ -77,7 +77,7 @@ class PokemonList extends Component {
                         <Loader />
                       </div>
                     ) : null}
-                    {data?.pokemons &&
+                    {data && data.pokemons &&
                       data.pokemons.map(poke =>
                         poke.status === 'PUBLISHED' ? (
                           <Pokemon key={`poke-list-${poke.pokeId}`} pokemon={poke} />
