@@ -3,7 +3,7 @@ import { DetailDescription } from './';
 
 const props = {
   shortDescription: 'I am short description',
-  description: 'I am a long description',
+  longDescription: 'I am a long description',
   gen: '1',
 };
 const wrapper = mount(<DetailDescription data={props} />);

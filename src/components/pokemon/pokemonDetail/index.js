@@ -42,45 +42,32 @@ function PokemonDetail({ location }) {
               pokeId,
               name,
               rarity,
-              maxCP,
-              maxAttack,
-              maxDefence,
-              maxStamina,
-              alolanForm,
-              shinyAvailable,
+              stats,
               raidBoss,
-              perfectIvs,
+              perfectIv,
               eggDistance,
               legacyMovesTable,
-              buddydistance,
+              buddyDistance,
               evolveCandy,
-              evolvmentTable,
-              description,
+              evolutionTable,
+              longDescription,
               shortDescription,
               generation,
               pokemonType,
-              pokemonSecondaryType,
               strengths,
               weakness,
-            } = data && data.pokemons && data.pokemons[0] ? data.pokemons[0] : {};
+              alolan,
+              galar,
+              shiny,
+            } = data && data.pokemon ? data.pokemon : {};
 
+            console.log(data)
 
-            const gen = data.pokemons && data.pokemons[0] ? generation.split('_').pop() : '';
-            const pivs = data.pokemons && data.pokemons[0] ? perfectIvs.cp : null;
-            const legacy = data.pokemons && data.pokemons[0] ? legacyMovesTable : null;
-            const evolvements = data.pokemons && data.pokemons[0] ? evolvmentTable.evos : null;
-            const types = [];
-
-            if (data.pokemons && data.pokemons[0]) {
-              types.push(pokemonType);
-            }
-
-            if (data.pokemons && data.pokemons[0] && pokemonSecondaryType !== undefined) {
-              types.push(pokemonSecondaryType);
-            }
-
+            const gen = data.pokemon ? generation : '';
+            const pivs = data.pokemon ? perfectIv.cp : null;
+            const legacy = data.pokemon ? legacyMovesTable : null;
+            const evolvements = data.pokemon ? evolutionTable : null;
             const connectionData = data.pokemonsConnection && data.pokemonsConnection.aggregate;
-
             const totalPoke = (connectionData && connectionData.count) || 251;
 
             content = (
@@ -96,22 +83,19 @@ function PokemonDetail({ location }) {
                       data={{
                         name,
                         pokeId,
-                        shinyAvailable,
-                        types,
-                        alolanForm,
+                        shiny,
+                        pokemonType,
+                        alolan,
                         eggDistance,
                         rarity,
                       }}
                     />
-                    <DetailDescription data={{ shortDescription, description, gen }} />
+                    <DetailDescription data={{ shortDescription, longDescription, gen }} />
                     <Stats
                       data={{
                         weakness,
                         strengths,
-                        maxCP,
-                        maxAttack,
-                        maxDefence,
-                        maxStamina,
+                        stats,
                       }}
                     />
                     <IvTable data={pivs} title="Perfect IVs by lvl" />
@@ -123,11 +107,11 @@ function PokemonDetail({ location }) {
 
                       {raidBoss ? <p>Active raid boss</p> : null}
                       <p>{evolveCandy ? 'Evolve cost: ' + evolveCandy + ' Candy' : null}</p>
-                      <p>{buddydistance ? 'Buddy candy distance: ' + buddydistance + ' km' : null}</p>
+                      <p>{buddyDistance ? 'Buddy candy distance: ' + buddyDistance + ' km' : null}</p>
                     </div>
                   </main>
                 </Wrapper>
-                <Pagination current={pokeId} provider={client} totalPoke={totalPoke} />
+                {/* <Pagination current={pokeId} provider={client} totalPoke={totalPoke} /> */}
               </React.Fragment>
             );
           }

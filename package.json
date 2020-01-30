@@ -11,6 +11,8 @@
   "dependencies": {
     "apollo": "^2.21.0",
     "apollo-boost": "^0.4.7",
+    "apollo-link-context": "^1.0.19",
+    "apollo-link-http": "^1.5.16",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.1",
     "enzyme-to-json": "^3.3.5",

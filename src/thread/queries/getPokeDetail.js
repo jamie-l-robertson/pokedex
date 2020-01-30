@@ -1,42 +1,35 @@
 import gql from "graphql-tag";
 
 const POKEMON_DETAIL_Q = gql`
-  query PokemonDetail($pokeid: [Int!]) {
-    pokemons(where: { pokeId_in: $pokeid }) {
-      ... on Pokemon {
-        status
-        pokeId
-        name
-        rarity
-        fleeRate
-        maxCP
-        maxHP
-        maxAttack
-        maxDefence
-        maxStamina
-        alolanForm
-        shinyAvailable
-        raidBoss
-        perfectIvs
-        eggDistance
-        legacyMovesTable
-        buddydistance
-        evolveCandy
-        evolvmentTable
-        description
-        shortDescription
-        generation
-        pokemonType
-        pokemonSecondaryType
-        strengths
-        weakness
-      }
+  query PokemonDetail($pokeid: IntType) {
+    pokemon(filter: {pokeId: { eq: $pokeid }}) {
+      pokeId
+      name
+      rarity
+      stats
+      raidBoss
+      perfectIv
+      eggDistance
+      legacyMovesTable
+      buddyDistance
+      evolveCandy
+      evolutionTable
+      longDescription
+      shortDescription
+      generation
+      pokemonType
+      strengths
+      weakness
+      alolan
+      galar
+      generation 
+      shiny
     }
-    pokemonsConnection(where: { status: PUBLISHED }) {
-      aggregate {
-        count
-      }
-    }
+    # pokemonsConnection(where: { status: PUBLISHED }) {
+    #   aggregate {
+    #     count
+    #   }
+    # }
   }
 `;
 

@@ -13,7 +13,7 @@ const poke = {
   maxDefence: 118,
   maxStamina: 90,
   alolanForm: null,
-  shinyAvailable: true,
+  shiny: true,
   raidBoss: null,
   perfectIvs: {
     cp: ['13', '132', '280', '420', '560', '701', '841', '911', '981'],

@@ -2,7 +2,7 @@ import React from 'react';
 import { DetailDescriptionWrapper } from './styles';
 
 export const DetailDescription = props => {
-  const { shortDescription, description, gen } = props.data;
+  const { shortDescription, longDescription, gen } = props.data;
   let generation;
 
   switch (gen) {
@@ -23,7 +23,7 @@ export const DetailDescription = props => {
   return (
     <DetailDescriptionWrapper>
       <h2>{shortDescription}</h2>
-      <p>{description}</p>
+      <p>{longDescription}</p>
       {generation != null ? (
         <p>
           Origin: <span className="region">{generation}</span>
