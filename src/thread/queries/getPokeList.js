@@ -10,30 +10,13 @@ const POKEMON_LIST_Q = gql`
     shiny: { eq: $shiny }, 
     _status: { eq: published } 
     }) {
+    ... on PokemonRecord {
       id
-      pokeId
       name
-      rarity
-      stats
-      raidBoss
-      perfectIv
-      eggDistance
-      legacyMovesTable
-      buddyDistance
-      evolveCandy
-      evolutionTable
-      longDescription
-      shortDescription
-      generation
-      pokemonType
-      strengths
-      weakness
-      alolan
-      galar
-      generation 
+      pokeId
       shiny
       _status
-      __typename
+    }
   }
 }`;
 

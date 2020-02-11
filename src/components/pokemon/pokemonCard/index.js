@@ -23,7 +23,7 @@ const Pokemon = ({ pokemon }) => {
         <h2>
           {pokemon.name} <span>#{pokemon.pokeId}</span>
         </h2>
-        {pokemon.shinyAvailable ? (
+        {pokemon.shiny ? (
           <StyledIcon className="shiny-icon" role="img" title="Shiny available" aria-label="Shiny available">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
               <path
