@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Query } from 'react-apollo';
 import { forceCheck } from 'react-lazyload';
+import InfiniteScroll from 'react-infinite-scroller';
 import Pokemon from '../pokemonCard';
 import Loader from '../../loader';
 import { Search } from '../../search';
@@ -15,6 +16,7 @@ class PokemonList extends Component {
     fetched: false,
     loading: false,
     filter: '',
+    cursor: 0,
   };
 
   constructor() {
@@ -49,6 +51,7 @@ class PokemonList extends Component {
     this.setState({
       loading: true,
       filter: '',
+      hasMore: true
     });
   }
 
@@ -65,9 +68,9 @@ class PokemonList extends Component {
         />
         <main>
           <List>
-            <Query query={POKEMON_LIST_Q} variables={searchVars}>
-              {({ loading, error, data }) => {
-
+            <Query
+              query={POKEMON_LIST_Q} key="list-query" variables={searchVars}>
+              {({ loading, error, data, fetchMore }) => {
                 return (
                   <React.Fragment>
                     {error ? <div>{error}</div> : null}
@@ -76,8 +79,39 @@ class PokemonList extends Component {
                         <Loader />
                       </div>
                     ) : null}
-                    {data && data.allPokemons &&
-                      data.allPokemons.map(poke => <Pokemon key={`poke-list-${poke.pokeId}`} pokemon={poke} />)}
+                    {data && data.allPokemons && (
+                      <InfiniteScroll
+                        pageStart={0}
+                        loadMore={() => {
+                          fetchMore({
+                            variables: {
+                              skip: data.allPokemons.length,
+                            },
+                            fetchPolicy: "cache-and-network",
+                            updateQuery: (previousResult, { fetchMoreResult }) => {
+
+                              if (!fetchMoreResult.allPokemons.length) {
+                                this.setState({ hasMore: false });
+                                return previousResult
+                              };
+
+                              const data = Object.assign(
+                                {}, previousResult, {
+                                allPokemons: [
+                                  ...previousResult.allPokemons,
+                                  ...fetchMoreResult.allPokemons
+                                ]
+                              }
+                              );
+                              return data;
+                            }
+                          });
+                        }}
+                        hasMore={this.state.hasMore}>
+                        {data.allPokemons.map(poke => <Pokemon key={`poke-list-${poke.id}`} pokemon={poke} />)}
+                      </InfiniteScroll>
+                    )}
+
                   </React.Fragment>
                 );
               }}

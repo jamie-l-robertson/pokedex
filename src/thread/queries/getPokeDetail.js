@@ -3,6 +3,8 @@ import gql from "graphql-tag";
 const POKEMON_DETAIL_Q = gql`
   query PokemonDetail($pokeid: IntType) {
     pokemon(filter: {pokeId: { eq: $pokeid }}) {
+     ... on PokemonRecord {
+        id
       pokeId
       name
       rarity
@@ -24,6 +26,8 @@ const POKEMON_DETAIL_Q = gql`
       galar
       generation 
       shiny
+      __typename
+     }
     }
     # pokemonsConnection(where: { status: PUBLISHED }) {
     #   aggregate {

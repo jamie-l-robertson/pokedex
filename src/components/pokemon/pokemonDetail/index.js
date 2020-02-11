@@ -15,6 +15,8 @@ import POKEMON_DETAIL_Q from '../../../thread/queries/getPokeDetail';
 
 function PokemonDetail({ location }) {
   const id = parseInt(location.search.split('=').pop(), 10);
+  // const params = new URLSearchParams(location.search);
+  // const id = params.get('id');
 
   return (
     <React.Fragment>
@@ -60,8 +62,6 @@ function PokemonDetail({ location }) {
               galar,
               shiny,
             } = data && data.pokemon ? data.pokemon : {};
-
-            console.log(data)
 
             const gen = data.pokemon ? generation : '';
             const pivs = data.pokemon ? perfectIv.cp : null;

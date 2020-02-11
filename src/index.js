@@ -15,18 +15,19 @@ import App from './App';
 const cache = new InMemoryCache({
   cacheRedirects: {
     Query: {
-      pokemons: (_, args) => {
-        const id = args.where.pokeId_in;
-        toIdValue(
-          cache.config.dataIdFromObject({
-            __typename: 'Pokemon',
-            pokeId_in: id,
-          }),
-        );
+      pokemon: (_, args) => {
+        cache.config.dataIdFromObject(object => {
+          return {
+            __typename: 'PokemonRecord',
+            id: object.id
+          }
+        });
       },
     },
   },
 });
+
+// const cache = new InMemoryCache();
 
 const httpLink = createHttpLink({
   uri: 'https://graphql.datocms.com/',
