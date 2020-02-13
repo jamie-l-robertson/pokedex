@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Footer /> Renders 1`] = `
+<styled.footer>
+  <footer
+    className="sc-bdVaJa hCQlbO"
+  >
+    <p>
+      Built by
+       
+      <a
+        href="https://www.linkedin.com/in/jamie-robertson-8b75905b/"
+        rel="noopener noreferrer"
+        target="_BLANK"
+      >
+        Jamie Robertson
+      </a>
+       
+      with
+       
+      <a
+        href="https://reactjs.org"
+        rel="noopener noreferrer"
+        target="_BLANK"
+      >
+        React
+      </a>
+       
+      and 
+      <span>
+        ♥
+      </span>
+      .
+    </p>
+    <p>
+      Content managed by
+       
+      <a
+        href="https://datocms.com"
+        rel="noopener noreferrer"
+        target="_BLANK"
+      >
+        DatoCMS
+      </a>
+      , images provided by
+       
+      <a
+        href="https://github.com/ZeChrales/PogoAssets"
+        rel="noopener noreferrer"
+        target="_BLANK"
+      >
+        PogoAssets
+      </a>
+    </p>
+    <p>
+      View project on
+       
+      <a
+        href="https://github.com/ru7hl355/pokedex"
+        rel="noopener noreferrer"
+        target="_BLANK"
+      >
+        Github
+      </a>
+    </p>
+  </footer>
+</styled.footer>
+`;

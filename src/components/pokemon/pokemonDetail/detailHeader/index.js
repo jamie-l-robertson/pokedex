@@ -6,7 +6,7 @@ import { DetailHeaderWrapper } from "./styles";
 
 function DetailHeader({ data }) {
   const [revealShiny, setRevealShiny] = useState(false);
-  const { name, pokeId, shinyAvailable, types, eggDistance, rarity } = data;
+  const { name, pokeId, shiny, pokemonType, eggDistance, rarity } = data;
   let [prevPoke, setPrevPoke] = useState(null);
 
   function handleShinyClick() {
@@ -25,12 +25,12 @@ function DetailHeader({ data }) {
           id={pokeId}
           alt="Normal variant"
           revealShiny={revealShiny}
-          preloadSpriteVariants={shinyAvailable}
+          preloadSpriteVariants={shiny}
         />
         <div className="content">
           <h1>
             {name}
-            {shinyAvailable ? (
+            {shiny ? (
               <span
                 className="icon"
                 role="img"
@@ -47,7 +47,7 @@ function DetailHeader({ data }) {
               </span>
             ) : null}
           </h1>
-          {types ? <PillList data={types} /> : null}
+          {pokemonType ? <PillList data={pokemonType} /> : null}
           {rarity ? (
             <span className="rarity">{rarity.split("_").join(" ")}</span>
           ) : null}

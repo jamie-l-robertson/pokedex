@@ -1,11 +1,8 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/10196c94-1a5b-480c-b8bc-7debbe0b7c2f/deploy-status)](https://app.netlify.com/sites/pokehelper/deploys)
-
+![GitHub package.json version](https://img.shields.io/github/package-json/v/jamie-l-robertson/pokedex.svg)
+![David](https://img.shields.io/david/jamie-l-robertson/pokedex.svg)
 ## React Pokedex
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/10196c94-1a5b-480c-b8bc-7debbe0b7c2f/deploy-status)](https://app.netlify.com/sites/pokehelper/deploys)
-
-React app that uses the [Pokéapi](https://pokeapi.co/) to create an interactive Pokedex.
 
 ### Requirements
 
@@ -26,7 +23,6 @@ When running localhost, cors must be allowed, i use the `Allow-Control-Allow-Ori
 
 - Add icons for quick reference of strengths/weaknesses
 - Filter by type, region and number
-- Caching of individual detail pages
 
 ### Tech used
 
@@ -34,9 +30,10 @@ When running localhost, cors must be allowed, i use the `Allow-Control-Allow-Ori
 - GraphQL
 - Express
 - Styled Components
+- Framer motion
 
 ### Credits
 
 - [Loader icon](https://commons.wikimedia.org/wiki/File:Pok%C3%A9_Ball_icon.svg)
 - [create-react-app](https://github.com/facebook/create-react-app)
-- [Graph CMS](http://app.graphcms.com)
+- [Dato CMS](http://www.datocms.com)

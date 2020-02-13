@@ -1,6 +1,6 @@
 import Styled from 'styled-components';
 
-export const Searchbox = Styled.div`
+export const Searchbox = Styled.header`
   position: fixed;
   z-index: 10;
   width: 100%;

@@ -1,7 +1,7 @@
 import Styled from 'styled-components';
-import { animated } from 'react-spring';
+import { motion } from 'framer-motion';
 
-export const Card = Styled(animated.article)`
+export const Card = Styled(motion.article)`
   display: inline-block;
   position: relative;
   margin: 10px;
@@ -20,6 +20,8 @@ export const Card = Styled(animated.article)`
     outline: 3px solid #145959;
 
     img {
+      display: block;
+      width: 130px;
       transition: 0.15s ease-in-out;
       transform: scale(1.1); 
     }
@@ -28,6 +30,7 @@ export const Card = Styled(animated.article)`
   img {
     display: block;
     position: relative;
+    display: block;
     z-index: 2;
     max-width: 130px;
   }

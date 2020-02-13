@@ -23,11 +23,11 @@ export const Footer = () => {
       <p>
         Content managed by{" "}
         <a
-          href="https://graphcms.com"
+          href="https://datocms.com"
           target="_BLANK"
           rel="noopener noreferrer"
         >
-          GraqhCMS
+          DatoCMS
         </a>
         , images provided by{" "}
         <a

@@ -4,7 +4,7 @@ import { PillList } from '../../pillList';
 import { StatsWrapper } from './styles';
 
 export const Stats = props => {
-  const { weakness, strengths, maxCP, maxAttack, maxStamina, maxDefence } = props.data;
+  const { weakness, strengths, stats } = props.data;
 
   // @TODO - move max values to constants file
   return (
@@ -14,10 +14,11 @@ export const Stats = props => {
         {strengths ? <PillList data={strengths} title="Strengths" /> : null}
       </div>
       <div className="stat-range">
-        <Slider value={maxCP} max={4955} label="Max CP" />
-        <Slider value={maxStamina} max={510} label="Max HP" />
-        <Slider value={maxAttack} max={345} label="Max Attack" />
-        <Slider value={maxDefence} max={396} label="Max Defense" />
+        <Slider value={stats.cp} max={4955} label="Max CP" />
+        <Slider value={stats.attack} max={345} label="Max Attack" />
+        <Slider value={stats.defense} max={396} label="Max Defense" />
+        <Slider value={stats.hp} max={4955} label="Max HP" />
+        <Slider value={stats.stamina} max={510} label="Max Stamina" />
       </div>
     </StatsWrapper>
   );

@@ -1,28 +1,34 @@
 {
   "name": "pokehelper",
-  "version": "1.2.7",
+  "version": "1.4.0",
   "private": true,
   "homepage": "http://pokehelper.netlify.com",
   "author": "Jamie Robertson",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ru7hl355/pokedex.git"
+    "url": "https://github.com/jamie-l-robertson/pokedex.git"
   },
   "dependencies": {
-    "apollo": "^1.6.0",
-    "apollo-boost": "^0.1.12",
-    "gh-pages": "^1.1.0",
-    "graphql": "^0.13.2",
-    "husky": "^2.3.0",
-    "react": "^16.8.3",
+    "apollo": "^2.21.0",
+    "apollo-boost": "^0.4.7",
+    "apollo-link-context": "^1.0.19",
+    "apollo-link-http": "^1.5.16",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.13.1",
+    "enzyme-to-json": "^3.3.5",
+    "framer-motion": "^1.8.4",
+    "graphql": "^14.5.8",
+    "jest": "24.7.1",
+    "react": "^16.8.6",
     "react-addons-css-transition-group": "^15.6.2",
-    "react-apollo": "^2.1.9",
-    "react-dom": "^16.8.3",
+    "react-apollo": "^3.1.3",
+    "react-dom": "^16.8.6",
+    "react-infinite-scroller": "^1.2.4",
     "react-lazyload": "^2.5.0",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.4",
-    "react-spring": "^8.0.20",
-    "styled-components": "^3.3.3"
+    "react-router-dom": "^5.0.0",
+    "react-scripts": "^3.0.0",
+    "react-test-renderer": "^16.8.6",
+    "styled-components": "^4.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -31,5 +37,17 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

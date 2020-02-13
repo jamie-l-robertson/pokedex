@@ -1,6 +1,7 @@
-import Styled from "styled-components";
+import Styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-export const HeaderControls = Styled.div`
+export const HeaderControls = Styled(motion.header)`
 display: block;
   max-width: 90%;
   margin: 20px auto;
@@ -10,7 +11,7 @@ display: block;
   }
 `;
 
-export const Wrapper = Styled.article`
+export const Wrapper = Styled(motion.article)`
   display: block;
   max-width: 90%;
   margin: 20px auto;

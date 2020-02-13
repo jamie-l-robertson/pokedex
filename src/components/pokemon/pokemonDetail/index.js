@@ -1,5 +1,6 @@
 import React from 'react';
 import { Query } from 'react-apollo';
+import { motion } from 'framer-motion';
 import Loader from '../../loader';
 import Pagination from '../pagination';
 import { Link } from 'react-router-dom';
@@ -13,65 +14,21 @@ import { Wrapper, HeaderControls } from './styles';
 // QUERIES
 import POKEMON_DETAIL_Q from '../../../thread/queries/getPokeDetail';
 
-function PokemonDetail({ location }) {
+const PokemonDetail = ({ location }) => {
   const id = parseInt(location.search.split('=').pop(), 10);
 
   return (
     <React.Fragment>
       <Query query={POKEMON_DETAIL_Q} variables={{ pokeid: id }}>
         {({ loading, error, data, client }) => {
-          const {
-            pokeId,
-            name,
-            rarity,
-            maxCP,
-            maxAttack,
-            maxDefence,
-            maxStamina,
-            alolanForm,
-            shinyAvailable,
-            raidBoss,
-            perfectIvs,
-            eggDistance,
-            legacyMovesTable,
-            buddydistance,
-            evolveCandy,
-            evolvmentTable,
-            description,
-            shortDescription,
-            generation,
-            pokemonType,
-            pokemonSecondaryType,
-            strengths,
-            weakness,
-          } = data.pokemons && data.pokemons[0] ? data.pokemons[0] : {};
 
           let content;
 
-          const gen = data.pokemons && data.pokemons[0] ? generation.split('_').pop() : '';
-          const pivs = data.pokemons && data.pokemons[0] ? perfectIvs.cp : null;
-          const legacy = data.pokemons && data.pokemons[0] ? legacyMovesTable : null;
-          const evolvements = data.pokemons && data.pokemons[0] ? evolvmentTable.evos : null;
-          const types = [];
-
-          data.pokemons && data.pokemons[0] ? types.push(pokemonType) : null;
-          data.pokemons && data.pokemons[0]
-            ? pokemonSecondaryType != undefined
-              ? types.push(pokemonSecondaryType)
-              : null
-            : null;
-
-          const connectionData = data.pokemonsConnection && data.pokemonsConnection.aggregate;
-
-          const totalPoke = (connectionData && connectionData.count) || 251;
-
           if (loading) {
             content = (
-              <Wrapper>
-                <div className="loading">
-                  <Loader />
-                </div>
-              </Wrapper>
+              <motion.div className="loading" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                <Loader />
+              </motion.div>
             );
           } else if (error) {
             content = (
@@ -80,54 +37,72 @@ function PokemonDetail({ location }) {
               </Wrapper>
             );
           } else {
+
+            const {
+              pokeId,
+              name,
+              rarity,
+              stats,
+              raidBoss,
+              perfectIv,
+              eggDistance,
+              buddyDistance,
+              evolveCandy,
+              evolutionTable,
+              longDescription,
+              shortDescription,
+              generation,
+              pokemonType,
+              strengths,
+              weakness,
+              alolan,
+              galar,
+              shiny,
+            } = data && data.pokemon ? data.pokemon : {};
+
+
+            const gen = data.pokemon ? generation : '';
+            const pivs = data.pokemon ? perfectIv.cp : null;
+            const evolvements = data.pokemon ? evolutionTable : null;
+            const totalPoke = data.allPokemons.length;
+
             content = (
               <React.Fragment>
-                <HeaderControls>
+                <HeaderControls initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }}>
                   <Link to="/" className="btn">
                     Back to List
                   </Link>
                 </HeaderControls>
-                <Wrapper>
-                  <DetailHeader
-                    data={{
-                      name,
-                      pokeId,
-                      shinyAvailable,
-                      types,
-                      alolanForm,
-                      eggDistance,
-                      rarity,
-                    }}
-                  />
-                  <DetailDescription data={{ shortDescription, description, gen }} />
-                  <Stats
-                    data={{
-                      weakness,
-                      strengths,
-                      maxCP,
-                      maxAttack,
-                      maxDefence,
-                      maxStamina,
-                    }}
-                  />
-                  <IvTable data={pivs} title="Perfect IVs by lvl" />
-                  <Evolutions data={{ evolvements, pokeId, name }} />
-                  <div>
-                    <ul>
-                      {legacy && legacy.length ? legacy.map((leg, i) => <li key={`legacy-` + i}>{leg}</li>) : null}
-                    </ul>
-
-                    {raidBoss ? <p>Active raid boss</p> : null}
-                    <p>{evolveCandy ? 'Evolve cost: ' + evolveCandy + ' Candy' : null}</p>
-                    <p>{buddydistance ? 'Buddy candy distance: ' + buddydistance + ' km' : null}</p>
-                  </div>
+                <Wrapper initial={{ y: 60, opacity: 0 }} animate={{ y: 0, opacity: 1 }}>
+                  <main>
+                    <DetailHeader
+                      data={{
+                        name,
+                        pokeId,
+                        shiny,
+                        pokemonType,
+                        alolan,
+                        eggDistance,
+                        rarity,
+                      }}
+                    />
+                    <DetailDescription data={{ shortDescription, longDescription, gen }} />
+                    <Stats data={{ weakness, strengths, stats }} />
+                    <IvTable data={pivs} title="Perfect IVs by lvl" />
+                    <Evolutions data={{ evolvements, pokeId, name }} />
+                    <div>
+                      {raidBoss ? <p>Active raid boss</p> : null}
+                      <p>{evolveCandy ? 'Evolve cost: ' + evolveCandy + ' Candy' : null}</p>
+                      <p>{buddyDistance ? 'Buddy candy distance: ' + buddyDistance + ' km' : null}</p>
+                    </div>
+                  </main>
                 </Wrapper>
-                <Pagination current={pokeId} provider={client} totalPoke={totalPoke} />
+                <Pagination current={pokeId} provider={client} nextPokeSet={totalPoke} />
               </React.Fragment>
             );
           }
 
-          return content;
+          return <motion.div exit={{ opacity: 0 }}>{content}</motion.div>;
         }}
       </Query>
     </React.Fragment>
