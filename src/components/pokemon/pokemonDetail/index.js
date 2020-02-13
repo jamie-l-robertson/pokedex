@@ -1,5 +1,6 @@
 import React from 'react';
 import { Query } from 'react-apollo';
+import { motion } from 'framer-motion';
 import Loader from '../../loader';
 import Pagination from '../pagination';
 import { Link } from 'react-router-dom';
@@ -13,24 +14,20 @@ import { Wrapper, HeaderControls } from './styles';
 // QUERIES
 import POKEMON_DETAIL_Q from '../../../thread/queries/getPokeDetail';
 
-function PokemonDetail({ location }) {
+export const PokemonDetail = ({ location }) => {
   const id = parseInt(location.search.split('=').pop(), 10);
-  // const params = new URLSearchParams(location.search);
-  // const id = params.get('id');
 
   return (
     <React.Fragment>
       <Query query={POKEMON_DETAIL_Q} variables={{ pokeid: id }}>
-        {({ loading, error, data, client }) => {
+        {({ loading, error, data }) => {
           let content;
 
           if (loading) {
             content = (
-              <Wrapper>
-                <div className="loading">
-                  <Loader />
-                </div>
-              </Wrapper>
+              <motion.div className="loading" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                <Loader />
+              </motion.div>
             );
           } else if (error) {
             content = (
@@ -72,12 +69,12 @@ function PokemonDetail({ location }) {
 
             content = (
               <React.Fragment>
-                <HeaderControls>
+                <HeaderControls initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }}>
                   <Link to="/" className="btn">
                     Back to List
                   </Link>
                 </HeaderControls>
-                <Wrapper>
+                <Wrapper initial={{ y: 60, opacity: 0 }} animate={{ y: 0, opacity: 1 }}>
                   <main>
                     <DetailHeader
                       data={{
@@ -91,20 +88,10 @@ function PokemonDetail({ location }) {
                       }}
                     />
                     <DetailDescription data={{ shortDescription, longDescription, gen }} />
-                    <Stats
-                      data={{
-                        weakness,
-                        strengths,
-                        stats,
-                      }}
-                    />
+                    <Stats data={{ weakness, strengths, stats }} />
                     <IvTable data={pivs} title="Perfect IVs by lvl" />
                     <Evolutions data={{ evolvements, pokeId, name }} />
                     <div>
-                      <ul>
-                        {legacy && legacy.length ? legacy.map((leg, i) => <li key={`legacy-` + i}>{leg}</li>) : null}
-                      </ul>
-
                       {raidBoss ? <p>Active raid boss</p> : null}
                       <p>{evolveCandy ? 'Evolve cost: ' + evolveCandy + ' Candy' : null}</p>
                       <p>{buddyDistance ? 'Buddy candy distance: ' + buddyDistance + ' km' : null}</p>
@@ -116,10 +103,10 @@ function PokemonDetail({ location }) {
             );
           }
 
-          return content;
+          return <motion.div exit={{ opacity: 0 }}>{content}</motion.div>;
         }}
       </Query>
-    </React.Fragment>
+    </React.Fragment >
   );
 }
 

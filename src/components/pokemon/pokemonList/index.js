@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Query } from 'react-apollo';
 import { forceCheck } from 'react-lazyload';
 import InfiniteScroll from 'react-infinite-scroller';
+import { motion } from 'framer-motion';
 import Pokemon from '../pokemonCard';
 import Loader from '../../loader';
 import { Search } from '../../search';
@@ -61,63 +62,70 @@ class PokemonList extends Component {
 
     return (
       <React.Fragment>
-        <Search
-          filter={this.state.filter}
-          handleInputChange={this.handleInputChange}
-          handleInputClear={this.handleInputClear}
-        />
-        <main>
-          <List>
-            <Query
-              query={POKEMON_LIST_Q} key="list-query" variables={searchVars}>
-              {({ loading, error, data, fetchMore }) => {
-                return (
-                  <React.Fragment>
-                    {error ? <div>{error}</div> : null}
-                    {loading ? (
-                      <div className="loading">
-                        <Loader />
-                      </div>
-                    ) : null}
-                    {data && data.allPokemons && (
-                      <InfiniteScroll
-                        pageStart={0}
-                        loadMore={() => {
-                          fetchMore({
-                            variables: {
-                              skip: data.allPokemons.length,
-                            },
-                            fetchPolicy: "cache-and-network",
-                            updateQuery: (previousResult, { fetchMoreResult }) => {
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          <Search
+            filter={this.state.filter}
+            handleInputChange={this.handleInputChange}
+            handleInputClear={this.handleInputClear}
+          />
+          <main>
+            <List>
+              <Query
+                query={POKEMON_LIST_Q} key="list-query" variables={searchVars}>
+                {({ loading, error, data, fetchMore }) => {
+                  return (
+                    <React.Fragment>
+                      {error ? <div>{error}</div> : null}
+                      {loading ? (
+                        <div className="loading">
+                          <Loader />
+                        </div>
+                      ) : null}
+                      {data && data.allPokemons && (
 
-                              if (!fetchMoreResult.allPokemons.length) {
-                                this.setState({ hasMore: false });
-                                return previousResult
-                              };
+                        <InfiniteScroll
+                          pageStart={0}
+                          loadMore={() => {
+                            fetchMore({
+                              variables: {
+                                skip: data.allPokemons.length,
+                              },
+                              fetchPolicy: "cache-and-network",
+                              updateQuery: (previousResult, { fetchMoreResult }) => {
 
-                              const data = Object.assign(
-                                {}, previousResult, {
-                                allPokemons: [
-                                  ...previousResult.allPokemons,
-                                  ...fetchMoreResult.allPokemons
-                                ]
+                                if (!fetchMoreResult.allPokemons.length) {
+                                  this.setState({ hasMore: false });
+                                  return previousResult
+                                };
+
+                                const data = Object.assign(
+                                  {}, previousResult, {
+                                  allPokemons: [
+                                    ...previousResult.allPokemons,
+                                    ...fetchMoreResult.allPokemons
+                                  ]
+                                }
+                                );
+                                return data;
                               }
-                              );
-                              return data;
-                            }
-                          });
-                        }}
-                        hasMore={this.state.hasMore}>
-                        {data.allPokemons.map(poke => <Pokemon key={`poke-list-${poke.id}`} pokemon={poke} />)}
-                      </InfiniteScroll>
-                    )}
+                            });
+                          }}
+                          hasMore={this.state.hasMore}>
+                          {data.allPokemons.map(poke => <Pokemon key={`poke-list-${poke.id}`} pokemon={poke} />)}
+                        </InfiniteScroll>
+                      )}
 
-                  </React.Fragment>
-                );
-              }}
-            </Query>
-          </List>
-        </main>
+                    </React.Fragment>
+                  );
+                }}
+              </Query>
+            </List>
+          </main>
+        </motion.div>
       </React.Fragment>
     );
   }

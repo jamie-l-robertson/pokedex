@@ -1,7 +1,7 @@
 import Styled from 'styled-components';
-import { animated } from 'react-spring';
+import { motion } from 'framer-motion';
 
-export const Card = Styled(animated.article)`
+export const Card = Styled(motion.article)`
   display: inline-block;
   position: relative;
   margin: 10px;
