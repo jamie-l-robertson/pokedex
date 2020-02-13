@@ -5,7 +5,6 @@ import { ApolloProvider } from 'react-apollo';
 import ApolloClient from 'apollo-client';
 import { createHttpLink } from 'apollo-link-http';
 import { setContext } from 'apollo-link-context';
-import { toIdValue } from 'apollo-utilities';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import * as serviceWorker from './serviceWorker';
 import './index.css';
@@ -15,7 +14,7 @@ import App from './App';
 const cache = new InMemoryCache({
   cacheRedirects: {
     Query: {
-      pokemon: (_, args) => {
+      pokemon: (_) => {
         cache.config.dataIdFromObject(object => {
           return {
             __typename: 'PokemonRecord',

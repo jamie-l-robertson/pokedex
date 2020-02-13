@@ -5,7 +5,7 @@ import POKEMON_DETAIL_Q from "../../../thread/queries/getPokeDetail";
 
 class Pagination extends Component {
   render() {
-    const { current, provider, totalPoke } = this.props;
+    const { current, provider, nextPokeSet } = this.props;
 
     return (
       <PaginationWrapper>
@@ -24,7 +24,7 @@ class Pagination extends Component {
             # {(current - 1).toString()}
           </Link>
         ) : null}
-        {current + 1 <= totalPoke ? (
+        {nextPokeSet > 0 ? (
           <Link
             to={`/pokemon?id=${current + 1}`}
             className="btn btn--next"

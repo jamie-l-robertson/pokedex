@@ -36,11 +36,11 @@ exports[`<Footer /> Renders 1`] = `
       Content managed by
        
       <a
-        href="https://graphcms.com"
+        href="https://datocms.com"
         rel="noopener noreferrer"
         target="_BLANK"
       >
-        GraqhCMS
+        DatoCMS
       </a>
       , images provided by
        

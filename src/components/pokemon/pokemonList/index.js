@@ -17,7 +17,7 @@ class PokemonList extends Component {
     fetched: false,
     loading: false,
     filter: '',
-    cursor: 0,
+    cursor: 0
   };
 
   constructor() {
@@ -110,6 +110,7 @@ class PokemonList extends Component {
                                   ]
                                 }
                                 );
+
                                 return data;
                               }
                             });

@@ -30,9 +30,10 @@ When running localhost, cors must be allowed, i use the `Allow-Control-Allow-Ori
 - GraphQL
 - Express
 - Styled Components
+- Framer motion
 
 ### Credits
 
 - [Loader icon](https://commons.wikimedia.org/wiki/File:Pok%C3%A9_Ball_icon.svg)
 - [create-react-app](https://github.com/facebook/create-react-app)
-- [Graph CMS](http://app.graphcms.com)
+- [Dato CMS](http://www.datocms.com)

@@ -14,13 +14,14 @@ import { Wrapper, HeaderControls } from './styles';
 // QUERIES
 import POKEMON_DETAIL_Q from '../../../thread/queries/getPokeDetail';
 
-export const PokemonDetail = ({ location }) => {
+const PokemonDetail = ({ location }) => {
   const id = parseInt(location.search.split('=').pop(), 10);
 
   return (
     <React.Fragment>
       <Query query={POKEMON_DETAIL_Q} variables={{ pokeid: id }}>
-        {({ loading, error, data }) => {
+        {({ loading, error, data, client }) => {
+
           let content;
 
           if (loading) {
@@ -45,7 +46,6 @@ export const PokemonDetail = ({ location }) => {
               raidBoss,
               perfectIv,
               eggDistance,
-              legacyMovesTable,
               buddyDistance,
               evolveCandy,
               evolutionTable,
@@ -60,12 +60,11 @@ export const PokemonDetail = ({ location }) => {
               shiny,
             } = data && data.pokemon ? data.pokemon : {};
 
+
             const gen = data.pokemon ? generation : '';
             const pivs = data.pokemon ? perfectIv.cp : null;
-            const legacy = data.pokemon ? legacyMovesTable : null;
             const evolvements = data.pokemon ? evolutionTable : null;
-            const connectionData = data.pokemonsConnection && data.pokemonsConnection.aggregate;
-            const totalPoke = (connectionData && connectionData.count) || 251;
+            const totalPoke = data.allPokemons.length;
 
             content = (
               <React.Fragment>
@@ -98,7 +97,7 @@ export const PokemonDetail = ({ location }) => {
                     </div>
                   </main>
                 </Wrapper>
-                {/* <Pagination current={pokeId} provider={client} totalPoke={totalPoke} /> */}
+                <Pagination current={pokeId} provider={client} nextPokeSet={totalPoke} />
               </React.Fragment>
             );
           }
@@ -106,7 +105,7 @@ export const PokemonDetail = ({ location }) => {
           return <motion.div exit={{ opacity: 0 }}>{content}</motion.div>;
         }}
       </Query>
-    </React.Fragment >
+    </React.Fragment>
   );
 }
 

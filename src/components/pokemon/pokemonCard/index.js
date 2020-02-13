@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import LazyLoad from 'react-lazyload';
-import { motion } from 'framer-motion';
 import { Sprite } from '../sprite';
 import { Card, StyledIcon } from './styles';
 

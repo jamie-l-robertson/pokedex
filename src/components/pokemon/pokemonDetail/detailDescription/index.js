@@ -6,14 +6,14 @@ export const DetailDescription = props => {
   let generation;
 
   switch (gen) {
-    case '1':
+    case 1:
       generation = 'Kanto';
       break;
-    case '2':
+    case 2:
       generation = 'Johto';
       break;
 
-    case '3':
+    case 3:
       generation = 'Hoenn';
       break;
     default:

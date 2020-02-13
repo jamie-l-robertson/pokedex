@@ -29,11 +29,9 @@ const POKEMON_DETAIL_Q = gql`
       __typename
      }
     }
-    # pokemonsConnection(where: { status: PUBLISHED }) {
-    #   aggregate {
-    #     count
-    #   }
-    # }
+    allPokemons(skip: $pokeid, filter: {_status: {eq: published}}, orderBy: pokeId_ASC) {
+      pokeId
+    }
   }
 `;
 
