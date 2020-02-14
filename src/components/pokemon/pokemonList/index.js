@@ -89,6 +89,7 @@ class PokemonList extends Component {
 
                         <InfiniteScroll
                           pageStart={0}
+                          threshold={960}
                           loadMore={() => {
                             fetchMore({
                               variables: {
