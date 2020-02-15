@@ -12,7 +12,7 @@ export const Search = props => {
           onChange={props.handleInputChange}
           id="search-input"
         />
-        <button onClick={props.handleInputClear}>Clear</button>
+        <button onClick={props.handleInputClear}>RESET</button>
       </form>
     </Searchbox>
   );
